@@ -1,0 +1,71 @@
+{# src/Louvre/BookingBundle/Resources/views/Booking/booking.html.twig #}
+
+{% extends "LouvreBookingBundle:Default:layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Booking
+{% endblock %}
+
+{% block BookingBundle_content %}
+<section class="col s12 m12 l9" id="content">
+
+    <div class="reservation light-blue-text darken-4">
+        <h4 id="billet" class="center-align">Réservation de billet(s)</h4>
+        <form class="container">
+
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <div class="row">
+                        <i class="material-icons prefix">schedule</i>
+                        <label for="dateR"  data-error="wrong" data-success="right">Date de Réservation</label>
+                        <input type="date" class="datepicker" id="dateR">
+                    </div>
+                </div>
+                <div class="col s6 m6 l6">
+                    <div class="switch">
+                        <i class="material-icons prefix">swap_horiz</i>
+                        <label>
+                            Demi-Journée
+                            <input checked type="checkbox">
+                            <span class="lever"></span>
+                            Journée
+                        </label>
+                        <p>(Demi-journée à partir de 14h)</p>
+                    </div>
+                </div>
+                <div class="input-field col s6 m6 l6">
+                    <i class="material-icons prefix">shopping_cart</i>
+                    <select id="nbreP">
+                        <option value="" disabled selected>Maximum 6 par commande</option>
+                        <option value="1">1 pers.</option>
+                        <option value="2">2 pers.</option>
+                        <option value="3">3 pers.</option>
+                        <option value="4">4 pers.</option>
+                        <option value="5">5 pers.</option>
+                        <option value="6">6 pers.</option>
+                    </select>
+                    <label for="nbreP">Nombre de places désirées</label>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <h5>Identités de(s) personne(s) :</h5>
+                    <div class="row blue lighten-5" id="boxes">4
+                        <!--Cette partie est générée automatiquyement en fonction du nombre de tickets sélectionnés-->
+
+                    </div>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" class="validate">
+                    <label for="email"  data-error="wrong" data-success="right">Email</label>
+                </div>
+
+                <button class="btn waves-effect waves-light disabled" id="valid" type="submit" name="action">Valider
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}
+

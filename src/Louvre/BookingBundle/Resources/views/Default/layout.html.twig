@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <!-- ************* MATERIALIZE Compiled and minified CSS ************* -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">-->
+    <link rel="stylesheet" href="{{ asset ('css/materialize.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{{ asset('css/projet4.css') }}">
+    <title>Projet4 MBL</title>
+
+</head>
+
+<body>
+<!--  ************************* HEADER *************************************** -->
+<header>
+    <nav>
+        <div class="nav-wrapper light-blue darken-4">
+            <a href="#" class="brand-logo">Billeterie du Musée du Louvre</a>
+            <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{{ path('louvre_booking_homepage') }}">Acceuil</a></li>
+                <li><a href="{{ path('louvre_booking_booking') }}">Billeterie</a></li>
+                <li><a href="#" >Nous contacter</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile">
+                <li><a href="{{ path('louvre_booking_homepage') }}">Acceuil</a></li>
+                <li><a href="{{ path('louvre_booking_booking') }}" class="cache">Billeterie</a></li>
+                <li><a href="#" >Nous contacter</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--  ************************* CORPS DE LA PAGE*************************************** -->
+<div class="had-container">
+    <div class="row">
+        <!--  ************************* BLOC GAUCHE *************************************** -->
+        <aside class="col l3 hide-on-med-only light-blue-text darken-4">
+            <h4 class=" center-align">Informations Billeterie</h4>
+            <div class="card horizontal hoverable blue lighten-5">
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p><strong>Le musée propose plusieurs types de tarifs</strong> :<br>
+                            <ul>
+                                <li><strong>- Normal</strong> : à partir de 12 ans à 16 €</li>
+                                <li><strong>- Enfant *</strong> : à partir de 4 ans et jusqu’à 12 ans, à 8 €</li>
+                                <li><strong>- Senior</strong> : à partir de 60 ans pour 12  €</li>
+                                <li><strong>- Réduit **</strong> : de 10 € </li>
+                            </ul>
+                            Nombre de places disponibles pour aujourd'hui : <span class="new badge" data-badge-caption="places">357</span>
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <p>
+                            * L’entrée est gratuite pour les enfants de moins de 4 ans.
+                        </p>
+                        <p>
+                            ** Accordé dans certaines conditions (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…).
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card horizontal hoverable">
+                <div class="card-image">
+                    {#Eventuellement une image de deco ici#}
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>Vous trouverez ici les informations liées à la réservation des billets d'entrée pour le Musée du Louvre.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Lien Eventuel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card horizontal hoverable">
+                <div class="card-image">
+                    {#Eventuellement une image de deco ici#}
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>Vous trouverez ici les informations liées à la réservation des billets d'entrée pour le Musée du Louvre.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Lien Eventuel</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!--  ************************* BLOC DROIT *************************************** -->
+
+                {% block BookingBundle_content %}
+
+                {% endblock %}
+
+    </div>
+    <!--  ************************* BLOC FOOTER REPLIABLE *************************************** -->
+    <div class="actions">
+        <div class="fixed-action-btn toolbar">
+            <a class="btn-floating btn-large light-blue darken-4">
+                <i class="large material-icons">info_outline</i>
+            </a>
+            <ul>
+                <li><a class="waves-effect waves-light light-blue darken-1"><i class="material-icons">translate</i></a></li>
+                <li><a class="waves-effect waves-light light-blue darken-2"><i class="material-icons">grade</i></a></li>
+                <li><a class="waves-effect waves-light light-blue darken-3"><i class="material-icons">question_answer</i></a></li>
+                <li><a class="waves-effect waves-light light-blue darken-4"><i class="material-icons">book</i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+
+{% block jquery %}
+
+{% endblock %}
+
+<script>
+    $(document).ready(function(){
+        // Initialisation du menu Responsive
+        $(".button-collapse").sideNav();
+
+        // Initialisation du DatePicker
+        $('.datepicker').pickadate({
+            monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+            today: 'Aujourd\'hui',
+            clear: 'Effacer',
+            formatSubmit: 'yyyy/mm/dd',
+            firstDay: 1, // Indique le premier jour est Lundi (1)
+            min: true, // Permet de désactiver toutes les dates antérieures à aujourd'hui
+            disable:[
+                2, // Désactive tous les mardis du calendrier
+                new Date(2017,10,1), // Désactive le 01/11/2017 (il faut le faire sur le mois précédent vu Doc Datepicker.js)
+                new Date(2017,11,25) // Désactive le 25/12/2017
+            ],
+            hiddenName: true, // Permet de renvoyer uniquement la valeur de la date sous la forme yyyy/mm/dd
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 1 // N'affiche que l'année en cours
+        });
+
+        // Pour que la liste déroulante fonctionne
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+        // Ajout X fois les informations à demander en fonction du nombre de ticket
+        var buttonValsss = $("#nbreP").val();
+        console.log(buttonValsss);
+        var boxes = $("#boxes");
+        console.log(boxes);
+        boxes.empty();
+        $("#nbreP").on('change', function(){
+            var buttonValsss = $("#nbreP").val();
+            console.log(buttonValsss);
+            var boxes = $("#boxes");
+            console.log(boxes);
+            boxes.empty(); // On vide le contenu de la balise correspondante à "boxes"
+            for (i = 0; i < buttonValsss; i++ ) {
+                var divFirstName = '<div class="input-field col s6 blue lighten-5 trait">'+
+                    '<i class="material-icons prefix">account_circle</i>'+
+                    '<input id="last_name' + i +'" type="text" class="validate">'+
+                    '<label for="last_name' + i +'"  data-error="wrong" data-success="right">Nom</label>'+
+                    '</div>';
+                var divLastName = '<div class="input-field col s6 blue lighten-5 trait">'+
+                    '<input id="first_name' + i +'" type="text" class="validate">'+
+                    '<label for="first_name' + i +'"  data-error="wrong" data-success="right">Prénom</label>'+
+                    '</div>';
+                var divCountry = '<div class="input-field col s4 blue lighten-5 ">'+
+                    '<i class="material-icons prefix">language</i>'+
+                    '<input id="pays' + i +'" type="text" class="validate">'+
+                    '<label for="pays' + i +'"  data-error="wrong" data-success="right">Pays</label>'+
+                    '</div>';
+                var divBirthday = '<div class="input-field col s4 blue lighten-5 ">'+
+                    '<input id="naissance' + i +'" type="text" class="validate">'+
+                    '<label for="naissance' + i +'"  data-error="wrong" data-success="right">Date de naissance (JJ/MM/AAAA)</label>'+
+                    '</div>';
+                var divReduit = '<div class="input-field col s4 blue lighten-5">'+
+                    '<input type="checkbox" id="reduit' + i +'" />'+
+                    '<label for="reduit' + i +'"><strong>Tarif réduit</strong><br><span>(Présentation de sa carte d\'étudiant, militaire, ou équivalent obligatoire le jour de la visite)</span></label>'+
+                    '</div>';
+
+                boxes.append(divFirstName + divLastName + divCountry + divBirthday + divReduit);
+            }
+        });
+        // Active le bouton Valider si l'adresse email est renseignée
+        $('#email').blur(function() {
+            if ( $(this).val() != "" ){
+                $('#valid').removeClass('disabled');
+            }
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>
+
+
