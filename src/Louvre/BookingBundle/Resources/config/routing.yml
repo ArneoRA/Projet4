@@ -5,3 +5,11 @@ louvre_booking_homepage:
 louvre_booking_booking:
     path:     /booking
     defaults: { _controller: LouvreBookingBundle:Default:booking }
+
+louvre_booking_order:
+    path:     /order
+    defaults: { _controller: LouvreBookingBundle:Order:prepare }
+
+louvre_booking_checkout:
+    path:     /checkout
+    defaults: { _controller: LouvreBookingBundle:Order:checkout }
