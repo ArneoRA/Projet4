@@ -10,4 +10,5 @@ namespace Louvre\BookingBundle\Repository;
  */
 class DetailReservationRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

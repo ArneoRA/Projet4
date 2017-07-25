@@ -7,12 +7,16 @@
 {% endblock %}
 
 {% block BookingBundle_content %}
-<section class="col s12 m12 l9" id="content">
-    <div id="images">
-        <img class="responsive-img" src="{{ asset('images/Louvre_1.jpg') }}" alt="Photo du Musée">
-    </div>
-    <div>
-        <h4  class="center-align light-blue-text darken-4">Bienvenue sur le nouveau système de réservation en ligne du Musée du Louvre !!</h4>
+<section class="col-lg-9" id="content">
+    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img class="img-responsive" src="{{ asset('images/Louvre_1.jpg') }}" alt="Photo du Musée">
+                <div class="carousel-caption">
+                    <h1>Bienvenue sur le nouveau système de réservation en ligne du Musée du Louvre !!</h1>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

@@ -3,6 +3,7 @@
 namespace Louvre\BookingBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Louvre\BookingBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,6 +16,33 @@ class OrderController extends Controller
     {
         return $this->render('LouvreBookingBundle:Order:prepare.html.twig');
     }
+
+
+    public function viewAction($id)
+    {
+        $resa = new Reservation();
+
+        // On redirige vers la page Order pour l'instant avec le contenu de la réservation
+        $ordre = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('LouvreBookingBundle:Reservation')
+            ->findOneById($id);
+        $detail = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('LouvreBookingBundle:DetailReservation')
+            ->find($ordre->getDetailResa());
+//                $pays = $this->getDoctrine()
+//                    ->getManager()
+//                    ->getRepository('LouvreBookingBundle:Pays')
+//                    ->find($detailR->getPaysVisiteur());
+
+        return $this->render('LouvreBookingBundle:Order:prepare.html.twig', array(
+            'ordres' => $ordre,
+            'detail' => $detail
+//                    'pays'   => $pays
+        ));
+    }
+
 
     /**
      * @Route(

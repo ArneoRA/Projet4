@@ -1,32 +1,46 @@
 {% extends "LouvreBookingBundle:Default:layout.html.twig" %}
 
+{% block title %}
+    {{ parent() }} - Booking
+{% endblock %}
 
 {% block BookingBundle_content %}
-        <div class="col s12 m12 l9">
-            <div id="welcome">
-                <h4 class="center-align light-blue-text darken-4">Projet 4 Module de paiement par Stripe</h4>
-            </div>
-
-            <div id="status">
-                <p>
-                    Vous êtes sur le point de payer un article qui vaut une petite fortune ! (995 francs, heu euros !)
-                <form action="{{ path('louvre_booking_checkout') }}" method="POST" id="payment_form">
-                    <script
-                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_test_injXYI2W2kNR1CfNgdXx35Si"
-                            data-amount="99500"
-                            data-name="Réservation en ligne"
-                            data-description=" Musée du Louvre"
-                            data-locale="auto"
-                            data-currency="eur">
-                    </script>
-                </form>
-                </p>
-            </div>
+    <h4>Réservation de billet(s)</h4>
+    <section class="well col-lg-9">
+        <div id="row">
+            <h4>Récapitulatif de votre commande</h4>
+            <ul>
+                <li>Code Réservertion : {{ ordres.codeReservation }}</li>
+                <li>Email Client : {{ ordres.emailClient }}</li>
+                <li>Date de Réservation : {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                <li>Nombre de place(s) : {{ ordres.nbrePlaces }}<br>
+                    Informations Visiteur : {{ detail.nomVisiteur }} / {{ detail.prenomVisiteur}} /  {{ detail.dateNaissance | date('d/m/y') }} / {{ detail.tarifVisiteur}}
+                </li>
+                <li>Date de votre visite : {{ ordres.dateVisite | date('d/m/Y') }}</li>
+                <li>Montant de votre commande : {{ ordres.montantReservation }}</li>
+            </ul>
         </div>
 
+        <div id="status">
+            <p>
+                Vous êtes sur le point de payer votre réservation :
+                {#<form action="{{ path('louvre_booking_checkout') }}" method="POST" id="payment_form">#}
+                {#<script#}
+                {#src="https://checkout.stripe.com/checkout.js" class="stripe-button"#}
+                {#data-key="pk_test_injXYI2W2kNR1CfNgdXx35Si"#}
+                {#data-amount="99500"#}
+                {#data-name="Réservation en ligne"#}
+                {#data-description=" Musée du Louvre"#}
+                {#data-locale="auto"#}
+                {#data-currency="eur">#}
+                {#</script>#}
+                {#</form>#}
+            </p>
+        </div>
 
+    </section>
 {% endblock %}
+
 
 {% block javascript %}
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

@@ -2,7 +2,10 @@
 
 namespace Louvre\BookingBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+// Permet d'ajouter des insertions (contraintes)
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * DetailReservation
@@ -42,6 +45,7 @@ class DetailReservation
      */
     private $paysVisiteur;
 
+
     /**
      * @var \DateTime
      *
@@ -56,11 +60,6 @@ class DetailReservation
      */
     private $tarifVisiteur;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Louvre\BookingBundle\Entity\Reservation")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $reservation;
     /**
      * Get id
      *
@@ -120,30 +119,6 @@ class DetailReservation
     }
 
     /**
-     * Set paysVisiteur
-     *
-     * @param string $paysVisiteur
-     *
-     * @return DetailReservation
-     */
-    public function setPaysVisiteur($paysVisiteur)
-    {
-        $this->paysVisiteur = $paysVisiteur;
-
-        return $this;
-    }
-
-    /**
-     * Get paysVisiteur
-     *
-     * @return string
-     */
-    public function getPaysVisiteur()
-    {
-        return $this->paysVisiteur;
-    }
-
-    /**
      * Set dateNaissance
      *
      * @param \DateTime $dateNaissance
@@ -191,27 +166,28 @@ class DetailReservation
         return $this->tarifVisiteur;
     }
 
+
     /**
-     * Set reservation
+     * Set paysVisiteur
      *
-     * @param \Louvre\BookingBundle\Entity\Reservation $reservation
+     * @param Pays $paysVisiteur
      *
      * @return DetailReservation
      */
-    public function setReservation(\Louvre\BookingBundle\Entity\Reservation $reservation)
+    public function setPaysVisiteur($paysVisiteur)
     {
-        $this->reservation = $reservation;
+        $this->paysVisiteur = $paysVisiteur;
 
         return $this;
     }
 
     /**
-     * Get reservation
+     * Get paysVisiteur
      *
-     * @return \Louvre\BookingBundle\Entity\Reservation
+     * @return \Louvre\BookingBundle\Entity\Pays
      */
-    public function getReservation()
+    public function getPaysVisiteur()
     {
-        return $this->reservation;
+        return $this->paysVisiteur;
     }
 }

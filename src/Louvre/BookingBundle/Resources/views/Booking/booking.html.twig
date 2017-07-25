@@ -7,64 +7,89 @@
 {% endblock %}
 
 {% block BookingBundle_content %}
-<section class="col s12 m12 l9" id="content">
+    <h4>Réservation de billet(s)</h4>
+    <section class="well col-lg-9">
+        {#{{ form(form) }}#}
 
-    <div class="reservation light-blue-text darken-4">
-        <h4 id="billet" class="center-align">Réservation de billet(s)</h4>
-        <form class="container">
-
-            <div class="row">
-                <div class="input-field col s12 m12 l12">
-                    <div class="row">
-                        <i class="material-icons prefix">schedule</i>
-                        <label for="dateR"  data-error="wrong" data-success="right">Date de Réservation</label>
-                        <input type="date" class="datepicker" id="dateR">
-                    </div>
-                </div>
-                <div class="col s6 m6 l6">
-                    <div class="switch">
-                        <i class="material-icons prefix">swap_horiz</i>
-                        <label>
-                            Demi-Journée
-                            <input checked type="checkbox">
-                            <span class="lever"></span>
-                            Journée
-                        </label>
-                        <p>(Demi-journée à partir de 14h)</p>
-                    </div>
-                </div>
-                <div class="input-field col s6 m6 l6">
-                    <i class="material-icons prefix">shopping_cart</i>
-                    <select id="nbreP">
-                        <option value="" disabled selected>Maximum 6 par commande</option>
-                        <option value="1">1 pers.</option>
-                        <option value="2">2 pers.</option>
-                        <option value="3">3 pers.</option>
-                        <option value="4">4 pers.</option>
-                        <option value="5">5 pers.</option>
-                        <option value="6">6 pers.</option>
-                    </select>
-                    <label for="nbreP">Nombre de places désirées</label>
-                </div>
-                <div class="input-field col s12 m12 l12">
-                    <h5>Identités de(s) personne(s) :</h5>
-                    <div class="row blue lighten-5" id="boxes">4
-                        <!--Cette partie est générée automatiquyement en fonction du nombre de tickets sélectionnés-->
-
-                    </div>
-                </div>
-                <div class="input-field col s12 m12 l12">
-                    <i class="material-icons prefix">email</i>
-                    <input id="email" type="email" class="validate">
-                    <label for="email"  data-error="wrong" data-success="right">Email</label>
-                </div>
-
-                <button class="btn waves-effect waves-light disabled" id="valid" type="submit" name="action">Valider
-                    <i class="material-icons right">send</i>
-                </button>
+        {{ form_start(form, {'attr': {
+            'class':'form-horizontal '
+        }}) }}
+        {{ form_errors(form) }}
+        <div class="row">
+            <div class="col-md-2">
+                {{ form_label(form.dateVisite) }}
+                {{ form_errors(form.dateVisite) }}
+                {{ form_widget(form.dateVisite) }}
             </div>
-        </form>
-    </div>
+
+            <div class="col-md-2 col-md-offset-1">
+                {{ form_label(form.typeReservation) }}
+                <label>
+                    Demi-Journée <span>(A partir de 14h)</span>
+                    {{ form_errors(form.typeReservation) }}
+                    {{ form_widget(form.typeReservation) }}
+                    Journée
+                </label>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                {{ form_label(form.nbrePlaces) }}
+                {{ form_errors(form.nbrePlaces) }}
+                {{ form_widget(form.nbrePlaces) }}
+            </div>
+            <div class="col-md-2 col-md-offset-1 bg-info">
+                Les informations des autres visiteurs vous seront demandés à la prochaine étape.
+            </div>
+        </div>
+
+        <div class="row">
+            <hr>
+            <div class="col-md-2">
+                {#{{ form_row(form.detailResa) }}#}
+                {{ form_label(form.detailResa.nomVisiteur) }}
+                {{ form_errors(form.detailResa.nomVisiteur) }}
+                {{ form_widget(form.detailResa.nomVisiteur) }}
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                {#{{ form_row(form.detailResa) }}#}
+                {{ form_label(form.detailResa.prenomVisiteur) }}
+                {{ form_errors(form.detailResa.prenomVisiteur) }}
+                {{ form_widget(form.detailResa.prenomVisiteur) }}
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                {#{{ form_row(form.detailResa) }}#}
+                {{ form_label(form.detailResa.paysVisiteur) }}
+                {{ form_errors(form.detailResa.paysVisiteur) }}
+                {{ form_widget(form.detailResa.paysVisiteur) }}
+            </div>
+            <div class="col-md-3">
+                {#{{ form_row(form.detailResa) }}#}
+                {{ form_label(form.detailResa.dateNaissance) }}
+                {{ form_errors(form.detailResa.dateNaissance) }}
+                {{ form_widget(form.detailResa.dateNaissance) }}
+            </div>
+            <div class="col-md-2">
+                {#{{ form_row(form.detailResa) }}#}
+                {{ form_label(form.detailResa.tarifVisiteur) }}
+                {{ form_errors(form.detailResa.tarifVisiteur) }}
+                {{ form_widget(form.detailResa.tarifVisiteur) }}
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                {{ form_label(form.emailClient) }}
+                {{ form_errors(form.emailClient) }}
+                {{ form_widget(form.emailClient) }}
+            </div>
+        </div>
+        <div class="row">
+            <hr>
+            {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+
+        {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)#}
+        {#et tous les champs cachés (type « hidden »). #}
+        {{ form_rest(form) }}
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
 </section>
 
 {% endblock %}

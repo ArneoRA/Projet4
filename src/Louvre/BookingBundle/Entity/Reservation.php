@@ -3,6 +3,8 @@
 namespace Louvre\BookingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+// Permet d'ajouter des insertions (contraintes)
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Reservation
@@ -50,6 +52,18 @@ class Reservation
     private $nbrePlaces;
 
     /**
+     * @var Detail réservation
+     *
+     * -- Contraintes de validation
+     * @Assert\Valid()
+     * @Assert\Type(type="Louvre\BookingBundle\Entity\DetailReservation")
+     *
+     * -- Liaison Unidirectionnelle entre Reservation et DetailReservation
+     * @ORM\OneToOne(targetEntity="DetailReservation", cascade={"persist"})
+     */
+    private $detailResa;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="Email_client", type="string", length=255)
@@ -60,6 +74,7 @@ class Reservation
      * @var string
      *
      * @ORM\Column(name="Montant_Reservation", type="decimal", precision=2, scale=0)
+     *
      */
     private $montantReservation;
 
@@ -69,6 +84,31 @@ class Reservation
      * @ORM\Column(name="Date_Visite", type="date")
      */
     private $dateVisite;
+
+
+    public function __construct()
+    {
+        $this->dateReservation = new \DateTime();
+        $this->dateVisite = new \DateTime();
+        $this->codeReservation = $this->aleatoire(10);
+        $this->montantReservation = 0;
+     }
+
+    /**
+     * @param $car
+     * Génére un code réservation composé de lettres et de chiffres d'une maniere aléatoire
+     * @return string
+     */
+    protected function aleatoire($car) {
+        $string = "";
+        $chaine = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        srand((double)microtime()*1000000);
+        for($i=0; $i<$car; $i++) {
+            $string .= $chaine[rand()%strlen($chaine)];
+        }
+        return $string;
+    }
+
 
 
     /**
@@ -248,5 +288,30 @@ class Reservation
     {
         return $this->dateVisite;
     }
-}
 
+
+
+    /**
+     * Set detailResa
+     *
+     * @param DetailReservation $detailResa
+     *
+     * @return Reservation
+     */
+    public function setDetailResa(DetailReservation $detailResa = null)
+    {
+        $this->detailResa = $detailResa;
+
+        return $this;
+    }
+
+    /**
+     * Get detailResa
+     *
+     * @return \LouvreBookingBundle\Entity\DetailReservation
+     */
+    public function getDetailResa()
+    {
+        return $this->detailResa;
+    }
+}
