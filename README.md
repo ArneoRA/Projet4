@@ -35,3 +35,36 @@ Ce commit comprend :
 - Mise à jour des getters et setters de l'entité **DetailReservation**
 - Mise à jour de la base de données
 - Suppression du Bundle de démonstration AppBundle
+
+______________________________________________________
+
+## 4eme Commit : Installation du composant Stripe pour Symfony
+
+Ce commit comprend :
+- Ajout dans composer.json de la ligne **"stripe/stripe-php":"4.*"**
+- Composer update pour installer le composant stripe
+- Création d'un controleur spécifique **OrderController.php**
+- Création d'une vue pour le order : **prepare.html.twig**
+- Ajout des 2 nouvelles **routes prepare** et **checkout** de **OrderController**
+
+______________________________________________________
+
+## 5eme Commit : Refonte du site avec le theme Cerulean Bootswatch et intégration du sous formulaire detailReservation
+
+Ce commit comprend :
+- Création de l'entité Pays qui contiendra la liste complete des pays du monde : **Pays.php**
+- Ajustement du formulaire **Booking** avec les éléments de l'entité **Reservation**.
+- Insertion du Sous Formulaire Detail Réservation pour les infos liées au Réservant
+- Création du fichier **mydatepicker.js**.
+- Simplification du formulaire **DetailReservationType** au niveau de la date de naissance (**BirthdayType**).
+- Enregistrement dans la base : OK
+- Génération du code réservation aléatoire : OK
+- Récapitulatif transmis sur la plage prepare.html.twig : OK
+
+______________________________________________________
+
+## 6eme Commit : Commit Temporaire avec le sous formulaire qui n'enregistre pas
+
+Ce commit comprend :
+- Récupération du nom pays dans la vue Récapitulative
+- Création du formulaire d'ajout d'une nombre de personnes

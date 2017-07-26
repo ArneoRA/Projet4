@@ -60,12 +60,11 @@ class DetailReservation
     private $tarifVisiteur;
 
     /**
-     * @var Reservation $reservation
-     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="details", cascade={"persist"})
-     * @ORM\JoinColumn(name="resa_id", referencedColumnName="id")
-     *
+     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="DetailReservation")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id")
+     * @var type
      */
-    private $resa;
+    private $reservation;
 
     /**
      * Get id
@@ -199,33 +198,4 @@ class DetailReservation
     }
 
 
-    /**
-     * Set reservation
-     *
-     * @param \Louvre\BookingBundle\Entity\Reservation $reservation
-     *
-     * @return DetailReservation
-     */
-    public function setResa(\Louvre\BookingBundle\Entity\Reservation $resa = null)
-    {
-        $this->resa = $resa;
-
-        return $this;
-    }
-
-    /**
-     * Get reservation
-     *
-     * @return \Louvre\BookingBundle\Entity\Reservation
-     */
-    public function getResa()
-    {
-        return $this->resa;
-    }
-
-
-    public function __toString()
-    {
-        return $this->getResa();
-    }
 }

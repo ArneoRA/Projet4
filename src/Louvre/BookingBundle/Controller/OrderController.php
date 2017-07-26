@@ -31,15 +31,15 @@ class OrderController extends Controller
             ->getManager()
             ->getRepository('LouvreBookingBundle:DetailReservation')
             ->find($ordre->getDetailResa());
-//                $pays = $this->getDoctrine()
-//                    ->getManager()
-//                    ->getRepository('LouvreBookingBundle:Pays')
-//                    ->find($detailR->getPaysVisiteur());
+        $pays = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('LouvreBookingBundle:Pays')
+            ->find($detail->getPaysVisiteur());
 
         return $this->render('LouvreBookingBundle:Order:prepare.html.twig', array(
             'ordres' => $ordre,
-            'detail' => $detail
-//                    'pays'   => $pays
+            'detail' => $detail,
+            'pays'   => $pays
         ));
     }
 

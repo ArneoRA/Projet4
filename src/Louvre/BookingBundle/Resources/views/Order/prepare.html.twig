@@ -1,25 +1,33 @@
 {% extends "LouvreBookingBundle:Default:layout.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Booking
+    {{ parent() }} - Recapitulatif
 {% endblock %}
 
 {% block BookingBundle_content %}
-    <h4>Réservation de billet(s)</h4>
-    <section class="well col-lg-9">
-        <div id="row">
+    <div id="row">
+        <div class="col-lg-3">
             <h4>Récapitulatif de votre commande</h4>
             <ul>
-                <li>Code Réservertion : {{ ordres.codeReservation }}</li>
-                <li>Email Client : {{ ordres.emailClient }}</li>
-                <li>Date de Réservation : {{ ordres.dateReservation | date('d/m/Y') }}</li>
-                <li>Nombre de place(s) : {{ ordres.nbrePlaces }}<br>
-                    Informations Visiteur : {{ detail.nomVisiteur }} / {{ detail.prenomVisiteur}} /  {{ detail.dateNaissance | date('d/m/y') }} / {{ detail.tarifVisiteur}}
-                </li>
-                <li>Date de votre visite : {{ ordres.dateVisite | date('d/m/Y') }}</li>
-                <li>Montant de votre commande : {{ ordres.montantReservation }}</li>
+                <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
+                <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
+                <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
+                <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
+                <li><strong>Montant de votre commande :</strong> {{ ordres.montantReservation }}</li>
             </ul>
         </div>
+        <div class="col-lg-3 col-lg-offset-1">
+            <h4>Informations du Réservant :</h4>
+            <ul>
+                <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
+                <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
+                <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
+                <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
+                <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+            </ul>
+        </div>
+    </div>
 
         <div id="status">
             <p>
@@ -38,7 +46,6 @@
             </p>
         </div>
 
-    </section>
 {% endblock %}
 
 

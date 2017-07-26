@@ -7,8 +7,7 @@
 {% endblock %}
 
 {% block BookingBundle_content %}
-    <h4>Réservation de billet(s)</h4>
-    <section class="well col-lg-9">
+
         {#{{ form(form) }}#}
 
         {{ form_start(form, {'attr': {
@@ -37,49 +36,47 @@
                 {{ form_widget(form.nbrePlaces) }}
             </div>
             <div class="col-md-2 col-md-offset-1 bg-info">
-                Les informations des autres visiteurs vous seront demandés à la prochaine étape.
+                <h4>Les informations des autres visiteurs vous seront demandés à la prochaine étape.</h4>
             </div>
         </div>
 
+        <div class="well col-lg-8 col-offset-4">
+            <div class="visiteurs" data-prototype="{{ form(form.details.vars.prototype)|e('html_attr') }}">
+                {#<div class="col-md-2">#}
+                     {#{{ form_label(form.details.nomVisiteur, 'Nom du Réservant') }}#}
+                     {#{{ form_errors(form.details.nomVisiteur) }}#}
+                     {#{{ form_widget(form.details.nomVisiteur) }}#}
+                {#</div>#}
+                {#<div class="col-md-2 col-md-offset-1">#}
+                    {#{{ form_label(form.details.prenomVisiteur, 'Prénom du Réservant') }}#}
+                    {#{{ form_errors(form.details.prenomVisiteur) }}#}
+                    {#{{ form_widget(form.details.prenomVisiteur) }}#}
+                {#</div>#}
+                {#<div class="col-md-2 col-md-offset-1">#}
+                    {#{{ form_label(form.details.paysVisiteur, 'Pays de Naissance') }}#}
+                    {#{{ form_errors(form.details.paysVisiteur) }}#}
+                    {#{{ form_widget(form.details.paysVisiteur) }}#}
+                {#</div>#}
+                {#<div class="col-md-3">#}
+                    {#{{ form_label(form.details.dateNaissance) }}#}
+                    {#{{ form_errors(form.details.dateNaissance) }}#}
+                    {#{{ form_widget(form.details.dateNaissance) }}#}
+                {#</div>#}
+                {#<div class="col-md-2">#}
+                    {#{{ form_label(form.details.tarifVisiteur, 'Tarif') }}#}
+                    {#{{ form_errors(form.details.tarifVisiteur) }}#}
+                    {#{{ form_widget(form.details.tarifVisiteur) }}#}
+                {#</div>#}
+            </div>
+
+
+        </div>
         <div class="row">
-            <hr>
-            <div class="col-md-2">
-                {#{{ form_row(form.detailResa) }}#}
-                {{ form_label(form.detailResa.nomVisiteur) }}
-                {{ form_errors(form.detailResa.nomVisiteur) }}
-                {{ form_widget(form.detailResa.nomVisiteur) }}
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                {#{{ form_row(form.detailResa) }}#}
-                {{ form_label(form.detailResa.prenomVisiteur) }}
-                {{ form_errors(form.detailResa.prenomVisiteur) }}
-                {{ form_widget(form.detailResa.prenomVisiteur) }}
-            </div>
-            <div class="col-md-2 col-md-offset-1">
-                {#{{ form_row(form.detailResa) }}#}
-                {{ form_label(form.detailResa.paysVisiteur) }}
-                {{ form_errors(form.detailResa.paysVisiteur) }}
-                {{ form_widget(form.detailResa.paysVisiteur) }}
-            </div>
-            <div class="col-md-3">
-                {#{{ form_row(form.detailResa) }}#}
-                {{ form_label(form.detailResa.dateNaissance) }}
-                {{ form_errors(form.detailResa.dateNaissance) }}
-                {{ form_widget(form.detailResa.dateNaissance) }}
-            </div>
-            <div class="col-md-2">
-                {#{{ form_row(form.detailResa) }}#}
-                {{ form_label(form.detailResa.tarifVisiteur) }}
-                {{ form_errors(form.detailResa.tarifVisiteur) }}
-                {{ form_widget(form.detailResa.tarifVisiteur) }}
-            </div>
             <div class="col-md-3 col-md-offset-1">
-                {{ form_label(form.emailClient) }}
+                {{ form_label(form.emailClient, 'Email du Réservant') }}
                 {{ form_errors(form.emailClient) }}
                 {{ form_widget(form.emailClient) }}
             </div>
-        </div>
-        <div class="row">
             <hr>
             {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
             {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
@@ -90,7 +87,11 @@
         {{ form_rest(form) }}
         {# Fermeture de la balise <form> du formulaire HTML #}
         {{ form_end(form) }}
-</section>
 
 {% endblock %}
 
+{% block javascript %}
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}

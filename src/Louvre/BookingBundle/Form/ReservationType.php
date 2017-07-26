@@ -4,7 +4,7 @@ namespace Louvre\BookingBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-//use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 //use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -39,12 +39,13 @@ class ReservationType extends AbstractType
                     '6 personnes' => 6,
                 )
             ))
-            ->add('detailResa', DetailReservationType::class)
-//            ->add('detailResa', CollectionType::class, array(
-//                'entry_type'    => DetailReservationType::class,
-//                'allow_add'     => false,
+//            ->add('detailResa', DetailReservationType::class)
+            ->add('details', CollectionType::class, array(
+                'entry_type'    => DetailReservationType::class,
+                'allow_add'     => true,
+                'by_reference'  => false,
 //                'allow_delete'  => false
-//            ))
+            ))
             ->add('emailClient', EmailType::class)
 //            ->add('montantReservation', TextType::class)
             ->add('Valider',      SubmitType::class);

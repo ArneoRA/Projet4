@@ -17,7 +17,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/projet4.css') }}">
-    <title>Projet4 MBL</title>
+    <title>Projet4 {% block title %}{% endblock %}</title>
 
 </head>
 
@@ -97,11 +97,13 @@
             </div>
         </aside>
         <!--  ************************* BLOC DROIT *************************************** -->
-
+        <h4>Réservation de billet(s)</h4>
+        <section class="well col-lg-9">
                 {% block BookingBundle_content %}
 
                 {% endblock %}
 
+        </section>
     </div>
 
     <!--  ************************* BLOC FOOTER *************************************** -->
@@ -123,7 +125,7 @@
 
     {#<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>#}
 <script type="text/javascript" src="{{ asset('js/mydatepicker.js') }}"></script>
-{#<script type="text/javascript" src="{{ asset('js/mydetail.js') }}"></script>#}
+<script type="text/javascript" src="{{ asset('js/mydetail.js') }}"></script>
 
 
 

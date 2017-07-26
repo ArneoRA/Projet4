@@ -6,6 +6,10 @@ louvre_booking_booking:
     path:     /booking
     defaults: { _controller: LouvreBookingBundle:Booking:booking }
 
+louvre_booking_test:
+    path:     /test/{id}
+    defaults: { _controller: LouvreBookingBundle:Booking:test }
+
 louvre_booking_order:
     path:     /order
     defaults: { _controller: LouvreBookingBundle:Order:prepare }

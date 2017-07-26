@@ -21,13 +21,10 @@ class DetailReservationType extends AbstractType
         $builder
             ->add('nomVisiteur', TextType::class)
             ->add('prenomVisiteur', TextType::class)
-            ->add('paysVisiteur', TextType::class)
-//            ->add('paysVisiteur', EntityType::class, array(
-//                'class'         =>'LouvreBookingBundle:Pays',
-//                'query_builder' => function (EntityRepository $entityRepository){
-//                    return $entityRepository->listePays();
-//                }
-//            ))
+            ->add('paysVisiteur', EntityType::class, array(
+                'class'         =>'LouvreBookingBundle:Pays',
+                'choice_label'  =>'nomFrFr'
+            ))
             ->add('dateNaissance', BirthdayType::class)
             ->add('tarifVisiteur', TextType::class);
     }

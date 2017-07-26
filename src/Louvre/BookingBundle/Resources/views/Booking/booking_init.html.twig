@@ -1,0 +1,109 @@
+{# src/Louvre/BookingBundle/Resources/views/Booking/booking.html.twig #}
+
+{% extends "LouvreBookingBundle:Default:layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Booking
+{% endblock %}
+
+{% block BookingBundle_content %}
+<section class="col s12 m12 l9" id="content">
+
+    <div class="reservation light-blue-text darken-4">
+        <h4 id="billet" class="center-align">Réservation de billet(s)</h4>
+        {{ form_start(form, {'attr': {'class': 'container'}}) }}
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        {#<form class="container">#}
+
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <div class="row">
+                        <div class="form-group">
+                            <i class="material-icons prefix">schedule</i>
+                            {{ form_label(form.dateVisite, "Date de Visite", {'label_attr': {
+                                'data-error': 'wrong',
+                                'data-success': 'right'
+                            }}) }}
+                            {{ form_errors(form.dateVisite) }}
+                            {{ form_widget(form.dateVisite, {'attr': {
+                                 'class': 'datepicker',
+                                 'id': 'dateR'
+                            }}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col s6 m6 l6">
+                    <div class="switch">
+                        <i class="material-icons prefix">swap_horiz</i>
+                        <label>
+                            Demi-Journée
+                            {#{{ form_label(form.typeReservation) }}#}
+                            {{ form_errors(form.typeReservation) }}
+                            {{ form_widget(form.typeReservation, {'attr': {
+                                'checked': true
+                            }}) }}
+                            {#<input checked type="checkbox">#}
+                            <span class="lever"></span>
+                            Journée
+                        </label>
+                        <p>(Demi-journée à partir de 14h)</p>
+                    </div>
+                </div>
+                <div class="col s6 m6 l6">
+
+                    {{ form_errors(form.nbrePlaces) }}
+                    {{ form_widget(form.nbrePlaces, {'attr': {
+                        'class':'places'
+                    }}) }}
+                    <i class="material-icons prefix">shopping_cart</i>
+                    {{ form_label(form.nbrePlaces, 'Nombres de visiteurs', {'label_attr': {
+                        'id': 'nbreP'
+                    }}) }}
+
+                </div>
+                <h5>Identités de(s) personne(s) :</h5>
+                <div class="input-field col s12 m12 l12">
+                    <div class="row blue lighten-5" id="boxes">
+                        <div class="col s11 m11 l11">
+                            {{ form_row(form.detailResa) }}
+                        </div>
+                        <div class="col s1 m1 l1">
+                            <a href="#" id="add_visitor" class="btn btn-default  valign-center">+ 1</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-field col s12 m12 l12">
+                    <i class="material-icons prefix">email</i>
+                    {{ form_label(form.emailClient, "Email", {'label_attr': {
+                        'data-error': 'wrong',
+                        'data-success': 'right'
+                    }}) }}
+                    {{ form_errors(form.emailClient) }}
+                    {{ form_widget(form.emailClient, {'attr': {
+                        'class': 'validate'
+                    }}) }}
+                </div>
+
+                {#<div class="input-field col s12 m12 l12">#}
+                    {#<i class="material-icons prefix">email</i>#}
+                    {#{{ form_label(form.montantReservation, "Montant de la Commande") }}#}
+                    {#{{ form_errors(form.montantReservation) }}#}
+                    {#{{ form_widget(form.montantReservation) }}#}
+                {#</div>#}
+
+                <button class="btn waves-effect waves-light disabled" id="valid" type="submit" name="action">Valider
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+            {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+            et tous les champs cachés (type « hidden »). #}
+            {{ form_rest(form) }}
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
+    </div>
+</section>
+
+{% endblock %}
+

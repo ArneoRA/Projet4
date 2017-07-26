@@ -1,0 +1,81 @@
+{% extends "LouvreBookingBundle:Default:layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Booking
+{% endblock %}
+
+{% block BookingBundle_content %}
+        <div id="row">
+            <div class="col-lg-3">
+                <h4>Récapitulatif de votre commande</h4>
+                <ul>
+                    <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
+                    <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
+                    <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                    <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
+                    <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
+                    <li><strong>Montant de votre commande :</strong> {{ ordres.montantReservation }}</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-lg-offset-1">
+                <h4>Informations du Réservant :</h4>
+                <ul>
+                    <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
+                    <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
+                    <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
+                    <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
+                    <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="well col-lg-9">
+
+        <div id="row">
+            <h4>Informations des autres visiteurs :</h4>
+            {% for forme in formD %}
+                <div>{{ form(forme) }}</div>
+            {% endfor %}
+                    {#{{ form(formD) }}#}
+                    {#{{ form_start(formD, {'attr': {#}
+                        {#'class':'form-horizontal '#}
+                    {#}}) }}#}
+                    {#{{ form_errors(formD) }}#}
+
+                    {#<div class="col-md-2">#}
+                    {#<i class="material-icons prefix">account_circle</i>#}
+                    {#{{ form_label(formD.nomVisiteur) }}#}
+                    {#{{ form_errors(formD.nomVisiteur) }}#}
+                    {#{{ form_widget(formD.nomVisiteur) }}#}
+                    {#</div>#}
+
+                    {#<div class="col-md-2">#}
+                    {#{{ form_label(formD.prenomVisiteur) }}#}
+                    {#{{ form_errors(formD.prenomVisiteur) }}#}
+                    {#{{ form_widget(formD.prenomVisiteur) }}#}
+                    {#</div>#}
+
+                    {#<div class="col-md-1">#}
+                    {#<i class="material-icons prefix">language</i>#}
+                    {#{{ form_label(formD.paysVisiteur) }}#}
+                    {#{{ form_errors(formD.paysVisiteur) }}#}
+                    {#{{ form_widget(formD.paysVisiteur) }}#}
+                    {#</div>#}
+
+                    {#<div class="col-md-3">#}
+                    {#{{ form_label(formD.dateNaissance) }}#}
+                    {#{{ form_errors(formD.dateNaissance) }}#}
+                    {#{{ form_widget(formD.dateNaissance) }}#}
+                    {#</div>#}
+
+                    {#<div class="col-md-1">#}
+                    {#{{ form_label(formD.tarifVisiteur) }}#}
+                    {#{{ form_errors(formD.tarifVisiteur) }}#}
+                    {#{{ form_widget(formD.tarifVisiteur) }}#}
+                    {#</div>#}
+
+                    {#{{ form_rest(formD) }}#}
+                    {#{{ form_end(formD) }}#}
+                <hr>
+        </div>
+{% endblock %}
