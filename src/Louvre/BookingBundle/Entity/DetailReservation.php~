@@ -39,8 +39,9 @@ class DetailReservation
     private $prenomVisiteur;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pays")
-     * @ORM\JoinColumn(name="Pays_Visiteur", referencedColumnName="id")
+     * @var string
+     *
+     * @ORM\Column(name="Pays_Visiteur", type="string", length=255)
      */
     private $paysVisiteur;
 
@@ -60,11 +61,10 @@ class DetailReservation
     private $tarifVisiteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="DetailReservation")
-     * @ORM\JoinColumn(name="id", referencedColumnName="id")
-     * @var type
+     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="details")
+     * @ORM\JoinColumn(name="resa_id", referencedColumnName="id")
      */
-    private $reservation;
+    private $resa;
 
     /**
      * Get id
@@ -176,7 +176,7 @@ class DetailReservation
     /**
      * Set paysVisiteur
      *
-     * @param Pays $paysVisiteur
+     * @param string $paysVisiteur
      *
      * @return DetailReservation
      */
@@ -190,12 +190,11 @@ class DetailReservation
     /**
      * Get paysVisiteur
      *
-     * @return \Louvre\BookingBundle\Entity\Pays
+     * @return string
      */
     public function getPaysVisiteur()
     {
         return $this->paysVisiteur;
     }
-
 
 }

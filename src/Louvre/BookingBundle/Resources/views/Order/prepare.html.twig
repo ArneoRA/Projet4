@@ -6,7 +6,7 @@
 
 {% block BookingBundle_content %}
     <div id="row">
-        <div class="col-lg-3">
+        <div class="col-lg-12">
             <h4>Récapitulatif de votre commande</h4>
             <ul>
                 <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
@@ -17,14 +17,16 @@
                 <li><strong>Montant de votre commande :</strong> {{ ordres.montantReservation }}</li>
             </ul>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
-            <h4>Informations du Réservant :</h4>
+        <div class="col-lg-6 col-lg-offset-1">
+            <h4>Informations Visiteurs :</h4>
             <ul>
-                <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
-                <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
-                <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
-                <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
-                <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+                {% for detail in details %}
+                    <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
+                    <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
+                    <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
+                    <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
+                    <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+                {% endfor %}
             </ul>
         </div>
     </div>

@@ -21,3 +21,7 @@ louvre_booking_view:
 louvre_booking_checkout:
     path:     /checkout
     defaults: { _controller: LouvreBookingBundle:Order:checkout }
+
+louvre_api_visite:
+    path:     /subform/{places}
+    defaults: { _controller: LouvreBookingBundle:Api:subform }

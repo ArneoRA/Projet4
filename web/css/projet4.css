@@ -1,8 +1,16 @@
 .carousel-caption h1{
     color: white;
-    margin-bottom: 313px;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
+.loading{
+    display: none;
+}
+
+#louvre_bookingbundle_reservation_Valider{
+    display: none;
+}
 
 /* CSS DEDIE AU FOOTER */
 footer{

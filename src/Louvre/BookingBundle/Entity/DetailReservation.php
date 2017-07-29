@@ -39,8 +39,9 @@ class DetailReservation
     private $prenomVisiteur;
 
     /**
-     * @ORM\OneToOne(targetEntity="Pays")
-     * @ORM\JoinColumn(name="Pays_Visiteur", referencedColumnName="id")
+     * @var string
+     *
+     * @ORM\Column(name="Pays_Visiteur", type="string", length=255)
      */
     private $paysVisiteur;
 
@@ -60,10 +61,8 @@ class DetailReservation
     private $tarifVisiteur;
 
     /**
-     * @var Reservation $reservation
-     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="details", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="details")
      * @ORM\JoinColumn(name="resa_id", referencedColumnName="id")
-     *
      */
     private $resa;
 
@@ -177,7 +176,7 @@ class DetailReservation
     /**
      * Set paysVisiteur
      *
-     * @param Pays $paysVisiteur
+     * @param string $paysVisiteur
      *
      * @return DetailReservation
      */
@@ -191,7 +190,7 @@ class DetailReservation
     /**
      * Get paysVisiteur
      *
-     * @return \Louvre\BookingBundle\Entity\Pays
+     * @return string
      */
     public function getPaysVisiteur()
     {
@@ -200,9 +199,9 @@ class DetailReservation
 
 
     /**
-     * Set reservation
+     * Set resa
      *
-     * @param \Louvre\BookingBundle\Entity\Reservation $reservation
+     * @param \Louvre\BookingBundle\Entity\Reservation $resa
      *
      * @return DetailReservation
      */
@@ -214,18 +213,12 @@ class DetailReservation
     }
 
     /**
-     * Get reservation
+     * Get resa
      *
      * @return \Louvre\BookingBundle\Entity\Reservation
      */
     public function getResa()
     {
         return $this->resa;
-    }
-
-
-    public function __toString()
-    {
-        return $this->getResa();
     }
 }

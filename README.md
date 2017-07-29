@@ -68,3 +68,18 @@ ______________________________________________________
 Ce commit comprend :
 - Récupération du nom pays dans la vue Récapitulative
 - Création du formulaire d'ajout d'une nombre de personnes
+
+______________________________________________________
+
+## 7eme Commit : Correction de la liaison Reservation-DetailReservation + Amélioration du sous-formulaire
+
+Ce commit comprend :
+- Refonte des entitées **Reservation** et **DetailReservation**
+- Ajout de la liaison **ManyToOne** entre ces 2 entitées
+- Mise en place du test sur la **date et le type de réservation** (**si datedujour et >14h alors Demi-Journée**)
+- Mise en place du test sur le **nombre de places demandées** afin d'afficher le nombre de sous formulaire adéquat
+- Création du fichier **mydetail.js** contenant le code pour afficher le nombre de sous formulaire.
+- choix du nombres de places et affichage du nombre de sous-formulaire adéquat : OK
+- Enregistrement multi-Visiteurs : OK
+- Petit Bug au niveau du test du type de réservation (Pour l'instant, j'ai désactivé le disabled pour éviter un exception au niveau de Symfony)
+

@@ -1,7 +1,7 @@
 {% extends "LouvreBookingBundle:Default:layout.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Booking
+    {{ parent() }} - TEST
 {% endblock %}
 
 {% block BookingBundle_content %}
@@ -12,30 +12,43 @@
                     <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
                     <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
                     <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                    <li><strong>Type Réservation :</strong>
+                            {% if ordres.typeReservation == 0 %}
+                                Dem-Journée
+                            {% else %}
+                                Journée
+                            {% endif %}
+                    </li>
                     <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
                     <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
                     <li><strong>Montant de votre commande :</strong> {{ ordres.montantReservation }}</li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-lg-offset-1">
-                <h4>Informations du Réservant :</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Informations des visiteurs :</h4>
                 <ul>
-                    <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
-                    <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
-                    <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
-                    <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
-                    <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+                    {% for detail in details %}
+                        <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
+                        <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
+                        <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
+                        <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
+                        <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
+
+
     </section>
     <section class="well col-lg-9">
 
         <div id="row">
             <h4>Informations des autres visiteurs :</h4>
-            {% for forme in formD %}
-                <div>{{ form(forme) }}</div>
-            {% endfor %}
+            {#{% for forme in formD %}#}
+                {#<div>{{ form(forme) }}</div>#}
+            {#{% endfor %}#}
                     {#{{ form(formD) }}#}
                     {#{{ form_start(formD, {'attr': {#}
                         {#'class':'form-horizontal '#}

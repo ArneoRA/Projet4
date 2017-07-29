@@ -75,18 +75,23 @@ class Reservation
     private $dateVisite;
 
     /**
-     * @var ArrayCollection $details
-     * @ORM\OneToMany(targetEntity="DetailReservation", mappedBy="resa", cascade={"persist"})
+     * @ORM\OneToMany (targetEntity="DetailReservation", mappedBy="resa", cascade={"persist"})
      */
     private $details;
+
+    /**
+     * Reservation constructor.
+     */
 
     public function __construct()
     {
         $this->dateReservation = new \DateTime();
         $this->dateVisite = new \DateTime();
+        $this->typeReservation = 1;
         $this->codeReservation = $this->aleatoire(10);
         $this->montantReservation = 0;
         $this->details = new ArrayCollection();
+
      }
 
     /**
@@ -284,18 +289,18 @@ class Reservation
         return $this->dateVisite;
     }
 
+
+
     /**
      * Add detail
      *
-     * @param \Louvre\BookingBundle\Entity\DetailReservation $details
+     * @param \Louvre\BookingBundle\Entity\DetailReservation $detail
      *
      * @return Reservation
      */
-    public function addDetail(\Louvre\BookingBundle\Entity\DetailReservation $details)
+    public function addDetail(\Louvre\BookingBundle\Entity\DetailReservation $detail)
     {
-        $this->details[] = $details;
-        // On lie la réservation au détail
-        $details->setResa($this);
+        $this->details[] = $detail;
 
         return $this;
     }
@@ -303,11 +308,11 @@ class Reservation
     /**
      * Remove detail
      *
-     * @param \Louvre\BookingBundle\Entity\DetailReservation $details
+     * @param \Louvre\BookingBundle\Entity\DetailReservation $detail
      */
-    public function removeDetail(\Louvre\BookingBundle\Entity\DetailReservation $details)
+    public function removeDetail(\Louvre\BookingBundle\Entity\DetailReservation $detail)
     {
-        $this->details->removeElement($details);
+        $this->details->removeElement($detail);
     }
 
     /**
@@ -319,10 +324,4 @@ class Reservation
     {
         return $this->details;
     }
-
-    public function __toString()
-    {
-        return $this->getDetails();
-    }
-
 }

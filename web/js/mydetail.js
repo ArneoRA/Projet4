@@ -1,54 +1,116 @@
 $(document).ready(function(){
-
-    $('a.product_add').on('click', function(e){
-        e.preventDefault();
-        var collectionHolder = $('#louvre_bookingbundle_reservation_details');
-        console.log(collectionHolder);
-        var prototype = collectionHolder.attr('data-prototype');
-        form = prototype.replace(/__name__/g, collectionHolder.children().length);
-        collectionHolder.append(form);
+    // //////////// Verrouillage du champ Type de réservation en fonction de la date de visite choisie /////////////////
+    $('#louvre_bookingbundle_reservation_dateVisite').blur(function(){
+            // *********** date de visite souhaitée **********************
+        var $datevisite = $('#louvre_bookingbundle_reservation_dateVisite').val();
+        // console.log('Valeur de date de visite : ' + $datevisite);
+            // *********** date du jour pour la comparaison **********************
+        moment.locale('fr');
+        var dateA = moment().format('L');
+        // console.log('Valeur de la date actuelle : ' + dateA);
+            // *********** heure du jour pour tester le "A partir de 14h" **********************
+        var dt = new Date();
+        var heure = dt.getHours();
+        // console.log('Heure actuelle : ' + heure);
+        if ( $datevisite == dateA){
+            if (heure >= 9){
+                // console.log(heure);
+                // console.log($datevisite);
+                $('#louvre_bookingbundle_reservation_typeReservation').val(0);
+                // $('#louvre_bookingbundle_reservation_typeReservation').attr('readonly', true);
+            } else
+            {
+                // console.log('heure inférieure à 10 : ' + heure);
+                // console.log($datevisite);
+                $('#louvre_bookingbundle_reservation_typeReservation').val(1);
+                // $('#louvre_bookingbundle_reservation_typeReservation').attr('readonly', false);
+            }
+        } else
+        {
+            $('#louvre_bookingbundle_reservation_typeReservation').attr('readonly', false);
+        }
     });
 
+    // ////////////////////////////// AJOUT D'AU MOINS 1 SOUS-FORMULAIRE ///////////////////////////////////
+    // On récupère la balise <div> qui contient l'attribut « data-prototype »
+    var $container = $('div#louvre_bookingbundle_reservation_details');
+    // console.log($container);
+    // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+    var index = $container.find(':input').length;
+    // console.log(index);
+    // On ajoute un premier champ automatiquement.
+    if (index == 0) {
+        addDetail($container);
+    }
 
-    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div.visiteurs');
-    console.log($container);
-    var $nbrePlaces = $("select#louvre_bookingbundle_reservation_nbrePlaces");
-    console.log($nbrePlaces);
-    var index = $nbrePlaces.val();
-    console.log('valeur de index : ' + index);
-
-    // Ajout X fois les informations à demander en fonction du nombre de personnes
+    // ////////////////////////////// AJOUT D'AU MOINS 1 SOUS-FORMULAIRE ///////////////////////////////////
+    // ********* RECUPERATION DES VARIABLES
+    var index = $container.find(':input').length;
+    var $nbrePlaces = $("#louvre_bookingbundle_reservation_nbrePlaces");
+    // console.log($nbrePlaces);
+    var indice = $nbrePlaces.val();
+    // console.log('valeur de indice : ' + indice);
+    // ********* SUR PERTE DU FOCUS Nbre de Palces
     $nbrePlaces.on('blur', function(e){
         e.preventDefault();
-        var index = $nbrePlaces.val()-1;
-        console.log('nouvelle valeur de index : ' + index);
+        var indice = $("#louvre_bookingbundle_reservation_nbrePlaces").val()-1;
         $container.empty();
-        for (i = 0; i <= index; i++ ) {
-            addVisiteur($container, i);
+        index = 0
+        for (i = 0; i <= indice; i++ ) {
+            addDetail($container);
             console.log('valeur de i : ' +i);
         }
     });
-    function addVisiteur($container, $indice) {
 
-        // Get the data-prototype explained earlier
-        var prototype = $container.data('prototype');
-        // Replace '__name__' in the prototype's HTML to
-        // instead be a number based on how many items we have
-        var newForm = prototype.replace(/__name__/g, $indice);
-        // increase the index with one for the next item
-        $container.data('index', index + 1);
+    // /////////////////////// FONCTION QUI AJOUTE UN SOUS-FORMULAIRE DetailRservationType ///////////////////////
+    function addDetail($container) {
+        // Dans le contenu de l'attribut « data-prototype », on remplace
+        // - le texte "__name__label__" qu'il contient par le label du champ
+        // - le texte "__name__" qu'il contient par le numéro du champ
+        var template = $container.attr('data-prototype')
+            .replace(/__name__label__/g, 'Visiteur n°' + (index+1))
+            .replace(/__name__/g,        index)
+        ;
         // On crée un objet jquery qui contient ce template
-        var $newFormLi = $('<div></div>').append(newForm);
-        // On ajoute le $newFormLi à la fin de la balise <ul>
-        $container.append($newFormLi);
+        var $prototype = $(template);
+        // console.log($prototype);
+        // Augmente l'index de 1 pour l'élément suivant
+        $container.data('index', index + 1);
+        // On ajoute le prototype modifié à la fin de la balise <div>
+        $container.append($prototype);
+        // Ajustement des champs du formulaire afin qu'ils tiennent tous sur une ligne (BootStrap)
+        $('#louvre_bookingbundle_reservation_details_' + index).children().removeClass('form-group').addClass('col-md-2');
+        $('#louvre_bookingbundle_reservation_details_' + index).find('div:nth-child(4)').removeClass('col-md-2').addClass('col-md-3');
+        $('#louvre_bookingbundle_reservation_details_' + index).find('div:last').removeClass('col-md-2').addClass('col-md-1');
+        // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+        index++;
     }
-
 
     // Active le bouton Valider si l'adresse email est renseignée
     $('#louvre_bookingbundle_reservation_emailClient').blur(function() {
         if ( $(this).val() != "" ){
-            $('#valid').removeClass('disabled');
+            $('#louvre_bookingbundle_reservation_Valider').show();
         }
     });
+
+    // FONCTION NON UTILISEE
+    // $('#louvre_bookingbundle_reservation_nbrePlaces').blur(function(){
+    //     console.log ('Valeur du Nbre de places : ' + $('#louvre_bookingbundle_reservation_nbrePlaces').val());
+    //     $.ajax({
+    //         type: 'get',
+    //         format: 'json',
+    //         url: 'http://localhost/Projet4/web/app_dev.php/subform/' + $(this).val(),
+    //         beforeSend: function(){
+    //             $(".loading").show();
+    //             $("#result").empty();
+    //         },
+    //         success: function(data){
+    //             console.log (data);
+    //             $("#result").append('<p>' + data[1] + '</p>');
+    //             $(".loading").hide();
+    //
+    //         }
+    //     });
+    // });
+
 });

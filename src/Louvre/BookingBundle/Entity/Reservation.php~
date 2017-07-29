@@ -75,10 +75,13 @@ class Reservation
     private $dateVisite;
 
     /**
-     * @ORM\OneToMany(targetEntity="DetailReservation", mappedBy="reservation", cascade={"persist"})
-     * @var type
+     * @ORM\OneToMany (targetEntity="DetailReservation", mappedBy="resa")
      */
-    protected $details;
+    private $details;
+
+    /**
+     * Reservation constructor.
+     */
 
     public function __construct()
     {
@@ -86,7 +89,7 @@ class Reservation
         $this->dateVisite = new \DateTime();
         $this->codeReservation = $this->aleatoire(10);
         $this->montantReservation = 0;
-        $this->details = new DetailReservation();
+
      }
 
     /**
@@ -283,7 +286,6 @@ class Reservation
     {
         return $this->dateVisite;
     }
-
 
 
 }

@@ -22,64 +22,36 @@
             </div>
 
             <div class="col-md-2 col-md-offset-1">
-                {{ form_label(form.typeReservation) }}
-                <label>
-                    Demi-Journée <span>(A partir de 14h)</span>
-                    {{ form_errors(form.typeReservation) }}
-                    {{ form_widget(form.typeReservation) }}
-                    Journée
-                </label>
+                {{ form_label(form.typeReservation, 'Demi-Journée à partir de 14h.') }}
+                {{ form_errors(form.typeReservation) }}
+                {{ form_widget(form.typeReservation) }}
+
             </div>
             <div class="col-md-2 col-md-offset-1">
                 {{ form_label(form.nbrePlaces) }}
                 {{ form_errors(form.nbrePlaces) }}
                 {{ form_widget(form.nbrePlaces) }}
             </div>
-            <div class="col-md-2 col-md-offset-1 bg-info">
-                <h4>Les informations des autres visiteurs vous seront demandés à la prochaine étape.</h4>
-            </div>
-        </div>
-
-        <div class="well col-lg-8 col-offset-4">
-            <div class="visiteurs" data-prototype="{{ form(form.details.vars.prototype)|e('html_attr') }}">
-                {#<div class="col-md-2">#}
-                     {#{{ form_label(form.details.nomVisiteur, 'Nom du Réservant') }}#}
-                     {#{{ form_errors(form.details.nomVisiteur) }}#}
-                     {#{{ form_widget(form.details.nomVisiteur) }}#}
-                {#</div>#}
-                {#<div class="col-md-2 col-md-offset-1">#}
-                    {#{{ form_label(form.details.prenomVisiteur, 'Prénom du Réservant') }}#}
-                    {#{{ form_errors(form.details.prenomVisiteur) }}#}
-                    {#{{ form_widget(form.details.prenomVisiteur) }}#}
-                {#</div>#}
-                {#<div class="col-md-2 col-md-offset-1">#}
-                    {#{{ form_label(form.details.paysVisiteur, 'Pays de Naissance') }}#}
-                    {#{{ form_errors(form.details.paysVisiteur) }}#}
-                    {#{{ form_widget(form.details.paysVisiteur) }}#}
-                {#</div>#}
-                {#<div class="col-md-3">#}
-                    {#{{ form_label(form.details.dateNaissance) }}#}
-                    {#{{ form_errors(form.details.dateNaissance) }}#}
-                    {#{{ form_widget(form.details.dateNaissance) }}#}
-                {#</div>#}
-                {#<div class="col-md-2">#}
-                    {#{{ form_label(form.details.tarifVisiteur, 'Tarif') }}#}
-                    {#{{ form_errors(form.details.tarifVisiteur) }}#}
-                    {#{{ form_widget(form.details.tarifVisiteur) }}#}
-                {#</div>#}
-            </div>
-
-
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-2 col-md-offset-1">
                 {{ form_label(form.emailClient, 'Email du Réservant') }}
                 {{ form_errors(form.emailClient) }}
                 {{ form_widget(form.emailClient) }}
             </div>
-            <hr>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="well" id="subfrom">
+                {{ form_widget(form.details)}}
+            </div>
+
+        </div>
+        <hr>
+        <div class="row">
             {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
-            {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-primary'}}) }}
+            {{ form_widget(form.Valider, {'attr': {
+                'class': 'btn-primary'
+            }}) }}
         </div>
 
         {# Génération automatique des champs pas encore écrits. Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)#}
@@ -90,8 +62,3 @@
 
 {% endblock %}
 
-{% block javascript %}
-    <script type="text/javascript">
-
-    </script>
-{% endblock %}

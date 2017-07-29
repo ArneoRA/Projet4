@@ -10,5 +10,17 @@ namespace Louvre\BookingBundle\Repository;
  */
 class ReservationRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function resaWithdetails($id)
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->leftJoin('d.details', 'detailResa')
+            ->addSelect('detailResa')
+            ->andWhere('r.id = :resa_id')
+            ->setParameter('resa_id', $id)
+            ;
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

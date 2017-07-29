@@ -28,7 +28,12 @@ class ReservationType extends AbstractType
                 // Format de la date
                 'format' => 'dd/MM/yyyy',
             ))
-            ->add('typeReservation', CheckboxType::class, array('required' => false))
+            ->add('typeReservation', ChoiceType::class, array(
+                'choices' => array(
+                    'Demi-Journée' =>0,
+                    'Journée' =>1,
+                )
+            ))
             ->add('nbrePlaces',ChoiceType::class, array(
                 'choices'    =>array(
                     '1 personne' => 1,
@@ -43,8 +48,7 @@ class ReservationType extends AbstractType
             ->add('details', CollectionType::class, array(
                 'entry_type'    => DetailReservationType::class,
                 'allow_add'     => true,
-                'by_reference'  => false,
-//                'allow_delete'  => false
+                'allow_delete'  => false,
             ))
             ->add('emailClient', EmailType::class)
 //            ->add('montantReservation', TextType::class)
