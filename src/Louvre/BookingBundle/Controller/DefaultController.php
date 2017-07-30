@@ -8,12 +8,10 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LouvreBookingBundle:Home:home.html.twig');
-    }
+//        $service = $this->container->get('Louvre_Booking.Traitements');
+//        $place = $service->getPlace(345);
 
-    public function bookingAction()
-    {
-        return $this->render('LouvreBookingBundle:Booking:booking.html.twig');
+        return $this->render('LouvreBookingBundle:Home:home.html.twig');
     }
 
 }

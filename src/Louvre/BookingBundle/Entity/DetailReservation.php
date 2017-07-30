@@ -4,14 +4,14 @@ namespace Louvre\BookingBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-// Permet d'ajouter des insertions (contraintes)
-use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * DetailReservation
  *
  * @ORM\Table(name="detail_reservation")
  * @ORM\Entity(repositoryClass="Louvre\BookingBundle\Repository\DetailReservationRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class DetailReservation
 {
@@ -26,49 +26,53 @@ class DetailReservation
 
     /**
      * @var string
-     *
      * @ORM\Column(name="Nom_Visiteur", type="string", length=255)
      */
     private $nomVisiteur;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="Prenom_Visiteur", type="string", length=255)
      */
     private $prenomVisiteur;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="Pays_Visiteur", type="string", length=255)
      */
     private $paysVisiteur;
 
-
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="Date_Naissance", type="date")
      */
     private $dateNaissance;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Tarif_Visiteur", type="decimal", precision=2, scale=0)
+     * @var boolean
+     * @ORM\Column(name="Tarif_Reduit", type="boolean")
      */
-    private $tarifVisiteur;
+    private $tarifReduit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="details")
-     * @ORM\JoinColumn(name="resa_id", referencedColumnName="id")
+     * @var integer
+     * @ORM\Column(name="Tarif_Visiteur", type="integer")
      */
-    private $resa;
+    private $tarifvisiteur = 0;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="details", cascade={"persist"})
+     * @ORM\JoinColumn(name="idresa", referencedColumnName="id")
+     */
+    private $reservation;
+
+    /**
+     * @ORM\Column(name="idresa", type="integer", nullable=true)
+     */
+    private $idResa = 0;
 
     /**
      * Get id
-     *
      * @return int
      */
     public function getId()
@@ -78,21 +82,17 @@ class DetailReservation
 
     /**
      * Set nomVisiteur
-     *
      * @param string $nomVisiteur
-     *
      * @return DetailReservation
      */
     public function setNomVisiteur($nomVisiteur)
     {
         $this->nomVisiteur = $nomVisiteur;
-
         return $this;
     }
 
     /**
      * Get nomVisiteur
-     *
      * @return string
      */
     public function getNomVisiteur()
@@ -102,21 +102,17 @@ class DetailReservation
 
     /**
      * Set prenomVisiteur
-     *
      * @param string $prenomVisiteur
-     *
      * @return DetailReservation
      */
-    public function setPrenomVisiteur($prenomVisiteur)
+    public function setPrenomVisiteur($prenomVisiteur=0)
     {
         $this->prenomVisiteur = $prenomVisiteur;
-
         return $this;
     }
 
     /**
      * Get prenomVisiteur
-     *
      * @return string
      */
     public function getPrenomVisiteur()
@@ -126,21 +122,17 @@ class DetailReservation
 
     /**
      * Set dateNaissance
-     *
      * @param \DateTime $dateNaissance
-     *
      * @return DetailReservation
      */
     public function setDateNaissance($dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
-
         return $this;
     }
 
     /**
      * Get dateNaissance
-     *
      * @return \DateTime
      */
     public function getDateNaissance()
@@ -150,34 +142,48 @@ class DetailReservation
 
     /**
      * Set tarifVisiteur
-     *
-     * @param string $tarifVisiteur
-     *
+     * @param string $tarifReduit
      * @return DetailReservation
      */
-    public function setTarifVisiteur($tarifVisiteur)
+    public function setTarifReduit($tarifReduit)
     {
-        $this->tarifVisiteur = $tarifVisiteur;
+        $this->tarifReduit = $tarifReduit;
+        return $this;
+    }
+
+    /**
+     * Get tarifReduit
+     * @return string
+     */
+    public function getTarifReduit()
+    {
+        return $this->tarifReduit;
+    }
+
+    /**
+     * Set tarifvisiteur
+     * @param integer $tarifvisiteur
+     * @return DetailReservation
+     */
+    public function setTarifvisiteur($tarifvisiteur)
+    {
+        $this->tarifvisiteur = $tarifvisiteur;
 
         return $this;
     }
 
     /**
-     * Get tarifVisiteur
-     *
-     * @return string
+     * Get tarifvisiteur
+     * @return integer
      */
-    public function getTarifVisiteur()
+    public function getTarifvisiteur()
     {
-        return $this->tarifVisiteur;
+        return $this->tarifvisiteur;
     }
-
 
     /**
      * Set paysVisiteur
-     *
      * @param string $paysVisiteur
-     *
      * @return DetailReservation
      */
     public function setPaysVisiteur($paysVisiteur)
@@ -189,7 +195,6 @@ class DetailReservation
 
     /**
      * Get paysVisiteur
-     *
      * @return string
      */
     public function getPaysVisiteur()
@@ -197,28 +202,44 @@ class DetailReservation
         return $this->paysVisiteur;
     }
 
-
     /**
-     * Set resa
-     *
-     * @param \Louvre\BookingBundle\Entity\Reservation $resa
-     *
+     * Set reservation
+     * @param \Louvre\BookingBundle\Entity\Reservation $reservation
      * @return DetailReservation
      */
-    public function setResa(\Louvre\BookingBundle\Entity\Reservation $resa = null)
+    public function setReservation(\Louvre\BookingBundle\Entity\Reservation $reservation = null)
     {
-        $this->resa = $resa;
+        $this->reservation = $reservation;
 
         return $this;
     }
 
     /**
-     * Get resa
-     *
+     * Get reservation
      * @return \Louvre\BookingBundle\Entity\Reservation
      */
-    public function getResa()
+    public function getReservation()
     {
-        return $this->resa;
+        return $this->reservation;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdResa()
+    {
+        return $this->idResa;
+    }
+
+    /**
+     * @param mixed $idResa
+     */
+    public function setIdResa($idResa)
+    {
+        $this->idResa = $idResa;
+    }
+
+
+
 }

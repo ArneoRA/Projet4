@@ -27,68 +27,46 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <h4>Informations des visiteurs :</h4>
-                <ul>
+                <h4>Informations des autres visiteurs :</h4>
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Pays</th>
+                        <th>Date de Naissance</th>
+                        <th>Tarif Réduit</th>
+                        <th>Tarif appliqué</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {% for detail in details %}
-                        <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
-                        <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
-                        <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
-                        <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
-                        <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
+                        <tr>
+                            <th>Visiteur n°{{ loop.index }}</th>
+                            <td>{{ detail.nomVisiteur }}</td>
+                            <td>{{ detail.prenomVisiteur}}</td>
+                            <td>{{ detail.paysVisiteur }}</td>
+                            <td>{{ detail.dateNaissance | date('d/m/Y') }}</td>
+                            <td>
+                                {% if detail.tarifReduit == 0 %}
+                                    Non
+                                {% else %}
+                                    Oui
+                                {% endif %}
+                            </td>
+                            <td>{{ detail.tarifVisiteur }} €</td>
+                        </tr>
                     {% endfor %}
-                </ul>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div id="row">
+            <div class="col-lg-9">
+                <button class="btn btn-danger">Validation de votre réservation</button>
             </div>
         </div>
 
-
-    </section>
-    <section class="well col-lg-9">
-
-        <div id="row">
-            <h4>Informations des autres visiteurs :</h4>
-            {#{% for forme in formD %}#}
-                {#<div>{{ form(forme) }}</div>#}
-            {#{% endfor %}#}
-                    {#{{ form(formD) }}#}
-                    {#{{ form_start(formD, {'attr': {#}
-                        {#'class':'form-horizontal '#}
-                    {#}}) }}#}
-                    {#{{ form_errors(formD) }}#}
-
-                    {#<div class="col-md-2">#}
-                    {#<i class="material-icons prefix">account_circle</i>#}
-                    {#{{ form_label(formD.nomVisiteur) }}#}
-                    {#{{ form_errors(formD.nomVisiteur) }}#}
-                    {#{{ form_widget(formD.nomVisiteur) }}#}
-                    {#</div>#}
-
-                    {#<div class="col-md-2">#}
-                    {#{{ form_label(formD.prenomVisiteur) }}#}
-                    {#{{ form_errors(formD.prenomVisiteur) }}#}
-                    {#{{ form_widget(formD.prenomVisiteur) }}#}
-                    {#</div>#}
-
-                    {#<div class="col-md-1">#}
-                    {#<i class="material-icons prefix">language</i>#}
-                    {#{{ form_label(formD.paysVisiteur) }}#}
-                    {#{{ form_errors(formD.paysVisiteur) }}#}
-                    {#{{ form_widget(formD.paysVisiteur) }}#}
-                    {#</div>#}
-
-                    {#<div class="col-md-3">#}
-                    {#{{ form_label(formD.dateNaissance) }}#}
-                    {#{{ form_errors(formD.dateNaissance) }}#}
-                    {#{{ form_widget(formD.dateNaissance) }}#}
-                    {#</div>#}
-
-                    {#<div class="col-md-1">#}
-                    {#{{ form_label(formD.tarifVisiteur) }}#}
-                    {#{{ form_errors(formD.tarifVisiteur) }}#}
-                    {#{{ form_widget(formD.tarifVisiteur) }}#}
-                    {#</div>#}
-
-                    {#{{ form_rest(formD) }}#}
-                    {#{{ form_end(formD) }}#}
-                <hr>
-        </div>
 {% endblock %}

@@ -94,20 +94,27 @@ $(document).ready(function(){
     });
 
     // FONCTION NON UTILISEE
-    // $('#louvre_bookingbundle_reservation_nbrePlaces').blur(function(){
-    //     console.log ('Valeur du Nbre de places : ' + $('#louvre_bookingbundle_reservation_nbrePlaces').val());
+    // $('#louvre_bookingbundle_reservation_details_0_dateNaissance_year').blur(function(){
+    //     var annee = $('#louvre_bookingbundle_reservation_details_0_dateNaissance_year').val();
+    //     var mois = $('#louvre_bookingbundle_reservation_details_0_dateNaissance_month').val() <10 ?
+    //         '0'+ $('#louvre_bookingbundle_reservation_details_0_dateNaissance_month').val()
+    //         : $('#louvre_bookingbundle_reservation_details_0_dateNaissance_month').val();
+    //     var jour = $('#louvre_bookingbundle_reservation_details_0_dateNaissance_day').val() <10 ?
+    //         '0'+ $('#louvre_bookingbundle_reservation_details_0_dateNaissance_day').val()
+    //         : $('#louvre_bookingbundle_reservation_details_0_dateNaissance_day').val();
+    //     var dateN = jour +'/'+ mois +'/'+ annee;
+    //     var dateE = new Date(dateN).getTime();
+    //     console.log ('Valeur de Date de Naissance : ' + dateE);
     //     $.ajax({
     //         type: 'get',
     //         format: 'json',
-    //         url: 'http://localhost/Projet4/web/app_dev.php/subform/' + $(this).val(),
+    //         url: 'http://localhost/Projet4/web/app_dev.php/subform/' + dateE,
     //         beforeSend: function(){
-    //             $(".loading").show();
-    //             $("#result").empty();
+    //             console.log('Ca charge');
     //         },
-    //         success: function(data){
-    //             console.log (data);
-    //             $("#result").append('<p>' + data[1] + '</p>');
-    //             $(".loading").hide();
+    //         success: function(){
+    //             console.log ('Ca vient Tkt');
+    //             // $("#louvre_bookingbundle_reservation_details_0_tarifvisiteur").val(data[1]);
     //
     //         }
     //     });

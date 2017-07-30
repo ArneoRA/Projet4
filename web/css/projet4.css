@@ -4,14 +4,24 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.loading{
-    display: none;
-}
-
+/* AJUSTEMENT CSS SOUS FORMULAIRE */
 #louvre_bookingbundle_reservation_Valider{
     display: none;
 }
 
+.form-horizontal .checkbox{
+    margin-top:15px;
+    padding-top: 15px;
+}
+
+.form-horizontal .checkbox label{
+    font-weight: bolder;
+}
+
+/* AJUSTEMENT TABLEAU RECAP VISITEURS */
+.table-bordered>tbody>tr>td{
+    text-align: center;
+}
 /* CSS DEDIE AU FOOTER */
 footer{
     background-color: #1995dc;

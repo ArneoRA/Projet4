@@ -1,57 +1,76 @@
 {% extends "LouvreBookingBundle:Default:layout.html.twig" %}
 
 {% block title %}
-    {{ parent() }} - Recapitulatif
+    {{ parent() }} - Order
 {% endblock %}
 
 {% block BookingBundle_content %}
-    <div id="row">
-        <div class="col-lg-12">
-            <h4>Récapitulatif de votre commande</h4>
-            <ul>
-                <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
-                <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
-                <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
-                <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
-                <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
-                <li><strong>Montant de votre commande :</strong> {{ ordres.montantReservation }}</li>
-            </ul>
+        <div id="row">
+            <div class="col-lg-3">
+                <h4>Récapitulatif de votre commande</h4>
+                <ul>
+                    <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
+                    <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
+                    <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                    <li><strong>Type Réservation :</strong>
+                            {% if ordres.typeReservation == 0 %}
+                                Dem-Journée
+                            {% else %}
+                                Journée
+                            {% endif %}
+                    </li>
+                    <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
+                    <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
+                </ul>
+            </div>
         </div>
-        <div class="col-lg-6 col-lg-offset-1">
-            <h4>Informations Visiteurs :</h4>
-            <ul>
-                {% for detail in details %}
-                    <li><strong>Nom :</strong> {{ detail.nomVisiteur }}</li>
-                    <li><strong>Prénom :</strong> {{ detail.prenomVisiteur}}</li>
-                    <li><strong>Pays :</strong> {{ pays.nomFrFR }}</li>
-                    <li><strong>Date de Naissance :</strong> {{ detail.dateNaissance | date('d/m/y') }}</li>
-                    <li><strong>Tarif d'entrée :</strong> {{ detail.tarifVisiteur}} €</li>
-                {% endfor %}
-            </ul>
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Informations des autres visiteurs :</h4>
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Pays</th>
+                        <th>Date de Naissance</th>
+                        <th>Tarif Réduit</th>
+                        <th>Prix d'entrée</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for detail in details %}
+                        <tr>
+                            <th>Visiteur n° {{ loop.index }}</th>
+                            <td>{{ detail.nomVisiteur }}</td>
+                            <td>{{ detail.prenomVisiteur}}</td>
+                            <td>{{ detail.paysVisiteur }}</td>
+                            <td>{{ detail.dateNaissance | date('d/m/Y') }}</td>
+                            <td>
+                                {% if detail.tarifReduit == 0 %}
+                                    Non
+                                {% else %}
+                                    Oui
+                                {% endif %}
+                            </td>
+                            <td>{{ detail.tarifVisiteur }}€</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-
-        <div id="status">
-            <p>
-                Vous êtes sur le point de payer votre réservation :
-                {#<form action="{{ path('louvre_booking_checkout') }}" method="POST" id="payment_form">#}
-                {#<script#}
-                {#src="https://checkout.stripe.com/checkout.js" class="stripe-button"#}
-                {#data-key="pk_test_injXYI2W2kNR1CfNgdXx35Si"#}
-                {#data-amount="99500"#}
-                {#data-name="Réservation en ligne"#}
-                {#data-description=" Musée du Louvre"#}
-                {#data-locale="auto"#}
-                {#data-currency="eur">#}
-                {#</script>#}
-                {#</form>#}
-            </p>
+        <hr>
+        <div id="row">
+            <div class="card col-lg-3">
+                <h4 class="card-header">
+                    Montant de votre commande : {{ ordres.montantReservation }}€
+                </h4>
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-danger">Validation de votre réservation</button>
+            </div>
         </div>
-
-{% endblock %}
-
-
-{% block javascript %}
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 {% endblock %}

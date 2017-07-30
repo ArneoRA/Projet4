@@ -20,21 +20,18 @@ class OrderController extends Controller
 
     public function viewAction($id)
     {
-        $resa = new Reservation();
-
         // On redirige vers la page Order pour l'instant avec le contenu de la réservation
         $ordre = $this->getDoctrine()
             ->getManager()
             ->getRepository('LouvreBookingBundle:Reservation')
-            ->findOneById($id);
-        $detail = $this->getDoctrine()
-            ->getManager()
-            ->getRepository('LouvreBookingBundle:DetailReservation')
-            ->find($ordre->getDetailResa());
+            ->find($id);
+        $details = $ordre->getDetails();
+
+
 
         return $this->render('LouvreBookingBundle:Order:prepare.html.twig', array(
             'ordres' => $ordre,
-            'detail' => $detail
+            'details' => $details
         ));
     }
 

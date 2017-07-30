@@ -16,9 +16,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ApiController extends Controller
 {
-    public function subformAction($places)
+    public function calculTarifAction($date)
     {
-        var_dump($places);
+
+
+        var_dump($date);
         die('Route et Action OK');
 
     }

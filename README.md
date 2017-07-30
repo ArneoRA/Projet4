@@ -83,3 +83,15 @@ Ce commit comprend :
 - Enregistrement multi-Visiteurs : OK
 - Petit Bug au niveau du test du type de réservation (Pour l'instant, j'ai désactivé le disabled pour éviter un exception au niveau de Symfony)
 
+______________________________________________________
+
+## 8eme Commit : Gestion des Tarifs et du Tarif Réduit
+
+Ce commit comprend :
+- Amélioration du rendu des **tarifs coté gauche**
+- Mise à jour de la vue **visiteurs.html.twig**
+- Mise en parametre du nombre max de billet par jour app/config/parameters.yml
+- Création d'une class services **BookingBundle/Services/Traitements** qui contient : **Calcul des tarifs**.
+- Configuration du service dans le fichier **BookingBundle/Resources/config/services.yml** sous le nom : **Louvre_Booking.Traitements**
+
+
