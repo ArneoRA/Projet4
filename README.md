@@ -94,4 +94,12 @@ Ce commit comprend :
 - Création d'une class services **BookingBundle/Services/Traitements** qui contient : **Calcul des tarifs**.
 - Configuration du service dans le fichier **BookingBundle/Resources/config/services.yml** sous le nom : **Louvre_Booking.Traitements**
 
+_____________________________________________________
 
+## 9eme Commit : Nettoyage du code et des fichiers inutiles / Installation de CoreSphereConsole
+
+Ce commit comprend :
+- Installation de **CoreSphereConsole** pour pouvoir utiliser la console directement depuis le web
+- Ajout dans le fichier **app_kernel.php** le bundle coreSphere
+- Ajout d'une route dans le fichier r**outing_dev.yml** du répertoire **app/config**.
+- Nettoyage des fichiers inutiles ou non utilisés (code, css, js, php).

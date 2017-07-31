@@ -35,9 +35,7 @@ class Traitements
     {
         $dt = new \DateTime();
         $dateJ = $dt->format('Y');
-//        var_dump($dateJ);
         $diff = $dateJ - $date;
-//        var_dump($diff);
         $tarif = 0;
 
         if($reduit == 1){                                // Tarif réduit 10€ / 5€
@@ -68,6 +66,4 @@ class Traitements
 
         return $tarif;
     }
-
-
 }

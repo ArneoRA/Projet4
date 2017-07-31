@@ -21,7 +21,6 @@
                     </li>
                     <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
                     <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
-                    <li><strong>Montant de votre commande :</strong> {{ ordres.montantReservation }}</li>
                 </ul>
             </div>
         </div>
@@ -64,9 +63,14 @@
         </div>
         <hr>
         <div id="row">
-            <div class="col-lg-9">
-                <button class="btn btn-danger">Validation de votre réservation</button>
+            <div class="card col-lg-3">
+                <h4 class="card-header">
+                    Montant de votre commande : {{ ordres.montantReservation }}€
+                </h4>
             </div>
+        <div class="col-lg-4">
+            <button class="btn btn-danger">Validation de votre réservation</button>
         </div>
+    </div>
 
 {% endblock %}
