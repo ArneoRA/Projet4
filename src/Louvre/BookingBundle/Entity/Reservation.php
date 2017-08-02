@@ -67,6 +67,12 @@ class Reservation
     private $dateVisite;
 
     /**
+     * @var boolean
+     * @ORM\column(name="valided", type="boolean")
+     */
+    private $valided;
+
+    /**
      * @ORM\OneToMany (targetEntity="DetailReservation", mappedBy="reservation", cascade={"persist"})
      */
     private $details;
@@ -83,6 +89,7 @@ class Reservation
         $this->codeReservation = $this->aleatoire(10);
         $this->montantReservation = 0;
         $this->details = new ArrayCollection();
+        $this->valided = 0;
 
      }
 
@@ -281,4 +288,28 @@ class Reservation
         return $this->details;
     }
 
+
+    /**
+     * Set valided
+     *
+     * @param boolean $valided
+     *
+     * @return Reservation
+     */
+    public function setValided($valided)
+    {
+        $this->valided = $valided;
+
+        return $this;
+    }
+
+    /**
+     * Get valided
+     *
+     * @return boolean
+     */
+    public function getValided()
+    {
+        return $this->valided;
+    }
 }

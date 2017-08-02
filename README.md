@@ -103,3 +103,15 @@ Ce commit comprend :
 - Ajout dans le fichier **app_kernel.php** le bundle coreSphere
 - Ajout d'une route dans le fichier r**outing_dev.yml** du répertoire **app/config**.
 - Nettoyage des fichiers inutiles ou non utilisés (code, css, js, php).
+_____________________________________________________
+
+## 10eme Commit : Gestion du paiement par le module Stripe
+
+Ce commit comprend :
+- Ajout des champs Montant et idRes "hidden" dans le formulaire prepare.html.twig afin de pouvoir récupérer le montant et l'identifiant de la transaction
+- Ajout d'un champ valided dans l'entité Reservation afin d'indiquer la bonne validation de la réservation apres paiement par Stripe
+- Modification de la vue de préparation du paiement **prepare.html.twig**
+- Modification de la vue de validation du paiement **valided.html.twig**
+---
+Modif Annexe : 
+- Modification du fichier mydetails.js afin que le changement du nombre de places se fassent sans attendre le clic de l'utilisateur

@@ -64,26 +64,14 @@
         <hr>
         <div id="row">
             <div class="col-lg-3 col-lg-offset-1">
-                    <h4><strong>Montant de votre commande : {{ ordres.montantReservation }}€</strong></h4>
+                    <h4><strong>Paiement de {{ ordres.montantReservation }}€ effectué.</strong></h4>
+                    <h6>(Un email vous a été envoyé qui sera à présenter à l'entrée du Musée).</h6>
             </div>
-            <div class="col-lg-4">
-                <form action="{{ path('louvre_booking_checkout') }}" method="POST">
-                    <div class="field">
-                        <input type="text" name="montant" value="{{ ordres.montantReservation }}" style="display: none">
-                        <input type="text" name="idRes" value="{{ ordres.id}}" style="display: none">
-                    </div>
-                    <script
-                            src="https://checkout.stripe.com/checkout.js"
-                            class="stripe-button"
-                            data-key="pk_test_injXYI2W2kNR1CfNgdXx35Si"
-                            data-amount="{{ ordres.montantReservation * 100 }}"
-                            data-name="Module de Paiement"
-                            data-description="Billeterie du Louvre P4"
-                            data-locale="auto"
-                            data-currency="eur">
-                    </script>
-                </form>
-
+            <div class="col-lg-6 col-lg-offset-1">
+                <div class="alert alert-info" role="alert">
+                    <h5><strong>PAIEMENT ACCEPTE...</strong></h5>
+                    <h6>Merci pour votre visite</h6>
+                </div>
             </div>
         </div>
 

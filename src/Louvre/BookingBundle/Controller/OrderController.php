@@ -27,14 +27,11 @@ class OrderController extends Controller
             ->find($id);
         $details = $ordre->getDetails();
 
-
-
         return $this->render('LouvreBookingBundle:Order:prepare.html.twig', array(
             'ordres' => $ordre,
             'details' => $details
         ));
     }
-
 
     /**
      * @Route(
@@ -47,12 +44,12 @@ class OrderController extends Controller
     {
         \Stripe\Stripe::setApiKey("sk_test_158n98qYZ53ogoXzOfMZdQzo"); // Clé Secret Stripe
 
-        // Obtenez les détails de la carte de crédit soumis par le formulaire
+        $em = $this->getDoctrine()->getManager();
+        // Récupération des élements de paiement
         $token = $_POST['stripeToken'];
-        $email = $_POST['email']; // Récupéré depuis le formulaire prepare.html.twig
-        $name = $_POST['name']; // Récupéré depuis le formulaire booking.html.twig si possible
-        $montant = $_POST['montant']; // Récupéré depuis le formulaire booking.html.twig si possible
-
+        $email = $_POST['stripeEmail']; // Récupérée depuis Stripe
+        $montant = $_POST['montant'];
+        $id = $_POST['idRes'];
 
         // Créer une charge: cela facturera la carte de l'utilisateur
         try {
@@ -60,17 +57,39 @@ class OrderController extends Controller
                 "amount" => $montant * 100, // Montant en centimes
                 "currency" => "eur",
                 "source" => $token,
-                "description" => 'Paiement Stripe de ' . $name . '[' . $email . ']'
+                "description" => 'Paiement Stripe de : '. $montant . '€ pour la réservation de l\'adresse Email : ' . $email
             ));
-            $this->addFlash("success","Bravo ça marche !");
-            return $this->redirectToRoute("order_prepare");
+            // MAJ du Montant total de la réservation
+            $resa = $em->getRepository('LouvreBookingBundle:Reservation')->find($id);
+            var_dump($resa->getValided());
+            $resa->setValided(true);
+            $em->persist($resa);
+            $em->flush();
+            var_dump($resa->getValided());
+            return $this->redirectToRoute('louvre_booking_checked', array('code' =>$resa->getCodeReservation()));
 
         } catch(\Stripe\Error\Card $e) {
-
-            $this->addFlash("error","Snif ça marche pas :(");
-            return $this->redirectToRoute("order_prepare");
+            return $this->redirectToRoute('louvre_booking_view');
             // The card has been declined
         }
+    }
+
+    public function checkedAction($code)
+    {
+
+        // On réaffiche l'ensemble de la réservation avec le détail
+        $ordre = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('LouvreBookingBundle:Reservation')
+            ->findOneBy(array('codeReservation' => $code));
+        $details = $ordre->getDetails();
+
+        // Envoi du mail contenant les informations de la réservation
+
+        return $this->render('LouvreBookingBundle:Order:valided.html.twig', array(
+            'ordres' => $ordre,
+            'details' => $details
+        ));
     }
 
 }

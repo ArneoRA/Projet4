@@ -18,6 +18,6 @@ louvre_booking_checkout:
     path:     /checkout
     defaults: { _controller: LouvreBookingBundle:Order:checkout }
 
-louvre_api_visite:
-    path:     /subform/{date}
-    defaults: { _controller: LouvreBookingBundle:Api:calculTarif }
+louvre_booking_checked:
+    path:     /checked/{code}
+    defaults: { _controller: LouvreBookingBundle:Order:checked }

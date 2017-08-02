@@ -51,7 +51,7 @@ $(document).ready(function(){
     var indice = $nbrePlaces.val();
     // console.log('valeur de indice : ' + indice);
     // ********* SUR PERTE DU FOCUS Nbre de Palces
-    $nbrePlaces.on('blur', function(e){
+    $nbrePlaces.on('change', function(e){
         e.preventDefault();
         var indice = $("#louvre_bookingbundle_reservation_nbrePlaces").val()-1;
         $container.empty();
@@ -87,7 +87,8 @@ $(document).ready(function(){
     }
 
     // Active le bouton Valider si l'adresse email est renseignée
-    $('#louvre_bookingbundle_reservation_emailClient').blur(function() {
+    $('#louvre_bookingbundle_reservation_emailClient').on('change',function(e) {
+        e.preventDefault();
         if ( $(this).val() != "" ){
             $('#louvre_bookingbundle_reservation_Valider').show();
         }

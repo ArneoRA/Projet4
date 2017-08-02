@@ -1,3 +1,4 @@
+/* AJUSTEMENT IMAGE D'ACCUEIL */
 .carousel-caption h1{
     color: white;
     margin-bottom: 30px;
@@ -22,6 +23,13 @@
 .table-bordered>tbody>tr>td{
     text-align: center;
 }
+
+/* AJUSTEMENT PARTIE PAIEMENT*/
+
+.alert h5, .alert h6{
+    text-align: center;
+}
+
 /* CSS DEDIE AU FOOTER */
 footer{
     background-color: #1995dc;
