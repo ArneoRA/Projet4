@@ -84,9 +84,40 @@ class OrderController extends Controller
             ->findOneBy(array('codeReservation' => $code));
         $details = $ordre->getDetails();
 
-        // Envoi du mail contenant les informations de la réservation
+        // Préparation du mail contenant les informations de la réservation
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Musée du Louvre - Votre réservation : [' .$ordre->getCodeReservation() . ']')
+            ->setFrom('arneo.42@gmail.com')
+            ->setTo($ordre->getEmailClient())
+            ->setContentType('text/html')
+            ->setBody($this->renderView('LouvreBookingBundle:Email:mail.html.twig', array(
+                'ordres'    =>$ordre,
+                'details'   =>$details
+            )));
+        // Envoi du mail
+        $this->get('mailer')
+            ->send($message);
 
+        // Retourne la vue de validation
         return $this->render('LouvreBookingBundle:Order:valided.html.twig', array(
+            'ordres' => $ordre,
+            'details' => $details
+        ));
+    }
+
+    // METHODE POUR TESTER LA VUE EMAIL
+    public function testmailAction($code)
+    {
+        // On réaffiche l'ensemble de la réservation avec le détail
+        $ordre = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('LouvreBookingBundle:Reservation')
+            ->findOneBy(array('codeReservation' => $code));
+        $details = $ordre->getDetails();
+
+
+        // Retourne la vue de validation
+        return $this->render('LouvreBookingBundle:Email:mail.html.twig', array(
             'ordres' => $ordre,
             'details' => $details
         ));

@@ -115,3 +115,16 @@ Ce commit comprend :
 ---
 Modif Annexe : 
 - Modification du fichier mydetails.js afin que le changement du nombre de places se fassent sans attendre le clic de l'utilisateur
+
+_____________________________________________________
+
+## 11eme Commit : Gestion de l'envoi de l'email
+
+Ce commit comprend :
+- Parametrage du bundle swiftmailer dans les ficheirs app/config/config.yml et parameters.yml
+- Ajout des lignes de code permettant le parametrage du mail et l'envoi du mail
+- Création d'une vue dédiée au contenu de l'email : **mail.html.twig**
+- Test d'envoi Ok
+- Scénario du retour à la page d'accueil automatique
+- Correction du fichier mydetail.js au niveau de la gestion du type de réservation en fonction de l'heure de la date de visite
+

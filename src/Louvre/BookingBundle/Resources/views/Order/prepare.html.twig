@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block BookingBundle_content %}
-        <div id="row">
+        <div class="row">
             <div class="col-lg-3 col-lg-offset-1">
                 <h4>Récapitulatif de votre commande</h4>
                 <ul>
@@ -23,8 +23,6 @@
                     <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
                 </ul>
             </div>
-        </div>
-        <div class="row">
             <div class="col-lg-6 col-lg-offset-1">
                 <h4>Informations des autres visiteurs :</h4>
                 <table class="table table-bordered table-responsive">
@@ -61,8 +59,9 @@
                 </table>
             </div>
         </div>
+
         <hr>
-        <div id="row">
+        <div class="row">
             <div class="col-lg-3 col-lg-offset-1">
                     <h4><strong>Montant de votre commande : {{ ordres.montantReservation }}€</strong></h4>
             </div>

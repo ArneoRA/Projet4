@@ -21,3 +21,7 @@ louvre_booking_checkout:
 louvre_booking_checked:
     path:     /checked/{code}
     defaults: { _controller: LouvreBookingBundle:Order:checked }
+
+louvre_booking_mail:
+    path:     /mail/{code}
+    defaults: { _controller: LouvreBookingBundle:Order:testmail }

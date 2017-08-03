@@ -3,4 +3,4 @@ services:
 #        resources: '../../src/Louvre/BookingBundle/Services/*'
         class: Louvre\BookingBundle\Services\Traitements
         arguments:
-            - %billet_max%
+            - billet_max

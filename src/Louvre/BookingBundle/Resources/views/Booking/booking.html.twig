@@ -11,7 +11,7 @@
         {#{{ form(form) }}#}
 
         {{ form_start(form, {'attr': {
-            'class':'form-horizontal '
+            'class':'form-horizontal'
         }}) }}
         {{ form_errors(form) }}
         <div class="row">
@@ -19,13 +19,14 @@
                 {{ form_label(form.dateVisite) }}
                 {{ form_errors(form.dateVisite) }}
                 {{ form_widget(form.dateVisite) }}
+                Nombre de places disponibles pour ce jour : <span class="new badge" data-badge-caption="places" id="nbplace">nbrPlace</span>
             </div>
 
             <div class="col-md-2 col-md-offset-1">
                 {{ form_label(form.typeReservation, 'Demi-Journée à partir de 14h.') }}
                 {{ form_errors(form.typeReservation) }}
                 {{ form_widget(form.typeReservation) }}
-
+                <span id="infotype"></span>
             </div>
             <div class="col-md-2 col-md-offset-1">
                 {{ form_label(form.nbrePlaces) }}

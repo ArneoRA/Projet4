@@ -1,0 +1,86 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+{% endblock %}
+
+{% block stylesheets %}
+    {# lien BootStrap avec Theme Cerulean Bootswatch #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/projet4.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            <h4>Musée du Louvre</h4>
+            <div id="logo">
+                <img  src="http://www.projet4.arnege.fr/images/logo_Louvre.jpg" alt="Logo Louvre">
+                <div>
+                    <p>
+                        Coordonnées : <br>
+                        <span>Rue de Rivoli, 75001 Paris</span><br>
+                        <span> Téléphone : 01 40 20 50 50</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-xs-offset-1">
+            <h4>Récapitulatif de votre commande</h4>
+            <ul>
+                <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
+                <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
+                <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                <li><strong>Type Réservation :</strong>
+                    {% if ordres.typeReservation == 0 %}
+                        Dem-Journée
+                    {% else %}
+                        Journée
+                    {% endif %}
+                </li>
+                <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
+                <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
+                <li><strong>Montant de la réservation :</strong> {{ ordres.montantReservation }}€ (Paiement validé).</li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h4>Informations des autres visiteurs :</h4>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Pays</th>
+                <th>Date de Naissance</th>
+                <th>Tarif Réduit</th>
+                <th>Prix d'entrée</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for detail in details %}
+                <tr>
+                    <th>Visiteur n° {{ loop.index }}</th>
+                    <td>{{ detail.nomVisiteur }}</td>
+                    <td>{{ detail.prenomVisiteur}}</td>
+                    <td>{{ detail.paysVisiteur }}</td>
+                    <td>{{ detail.dateNaissance | date('d/m/Y') }}</td>
+                    <td>
+                        {% if detail.tarifReduit == 0 %}
+                            Non
+                        {% else %}
+                            Oui
+                        {% endif %}
+                    </td>
+                    <td>{{ detail.tarifVisiteur }}€</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+

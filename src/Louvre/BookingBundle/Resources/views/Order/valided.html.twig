@@ -1,78 +1,85 @@
 {% extends "LouvreBookingBundle:Default:layout.html.twig" %}
 
+    {% block metahttp %}
+        <meta http-equiv="refresh" content="5; URL={{ path('louvre_booking_homepage') }}">
+    {% endblock %}
+
+
 {% block title %}
     {{ parent() }} - Order
 {% endblock %}
 
 {% block BookingBundle_content %}
-        <div id="row">
-            <div class="col-lg-3 col-lg-offset-1">
-                <h4>Récapitulatif de votre commande</h4>
-                <ul>
-                    <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
-                    <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
-                    <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
-                    <li><strong>Type Réservation :</strong>
-                            {% if ordres.typeReservation == 0 %}
-                                Dem-Journée
-                            {% else %}
-                                Journée
-                            {% endif %}
-                    </li>
-                    <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
-                    <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
-                </ul>
-            </div>
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-1">
+            <h4>Récapitulatif de votre commande</h4>
+            <ul>
+                <li><strong>Code Réservertion :</strong> {{ ordres.codeReservation }}</li>
+                <li><strong>Email Client :</strong> {{ ordres.emailClient }}</li>
+                <li><strong>Date de Réservation :</strong> {{ ordres.dateReservation | date('d/m/Y') }}</li>
+                <li><strong>Type Réservation :</strong>
+                    {% if ordres.typeReservation == 0 %}
+                        Dem-Journée
+                    {% else %}
+                        Journée
+                    {% endif %}
+                </li>
+                <li><strong>Nombre de place(s) :</strong> {{ ordres.nbrePlaces }}</li>
+                <li><strong>Date de votre visite :</strong> {{ ordres.dateVisite | date('d/m/Y') }}</li>
+            </ul>
         </div>
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-1">
-                <h4>Informations des autres visiteurs :</h4>
-                <table class="table table-bordered table-responsive">
-                    <thead>
+        <div class="col-lg-6 col-lg-offset-1">
+            <h4>Informations des autres visiteurs :</h4>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Pays</th>
+                    <th>Date de Naissance</th>
+                    <th>Tarif Réduit</th>
+                    <th>Prix d'entrée</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for detail in details %}
                     <tr>
-                        <th></th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Pays</th>
-                        <th>Date de Naissance</th>
-                        <th>Tarif Réduit</th>
-                        <th>Prix d'entrée</th>
+                        <th>Visiteur n° {{ loop.index }}</th>
+                        <td>{{ detail.nomVisiteur }}</td>
+                        <td>{{ detail.prenomVisiteur}}</td>
+                        <td>{{ detail.paysVisiteur }}</td>
+                        <td>{{ detail.dateNaissance | date('d/m/Y') }}</td>
+                        <td>
+                            {% if detail.tarifReduit == 0 %}
+                                Non
+                            {% else %}
+                                Oui
+                            {% endif %}
+                        </td>
+                        <td>{{ detail.tarifVisiteur }}€</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {% for detail in details %}
-                        <tr>
-                            <th>Visiteur n° {{ loop.index }}</th>
-                            <td>{{ detail.nomVisiteur }}</td>
-                            <td>{{ detail.prenomVisiteur}}</td>
-                            <td>{{ detail.paysVisiteur }}</td>
-                            <td>{{ detail.dateNaissance | date('d/m/Y') }}</td>
-                            <td>
-                                {% if detail.tarifReduit == 0 %}
-                                    Non
-                                {% else %}
-                                    Oui
-                                {% endif %}
-                            </td>
-                            <td>{{ detail.tarifVisiteur }}€</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-1">
+            <div class="alert alert-info" role="alert">
+                <h5><strong>PAIEMENT DE {{ ordres.montantReservation }}€ ACCEPTE.</strong></h5>
+                <h6>(Un email vous a été envoyé qui sera à présenter à l'entrée du Musée).</h6>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6 col-lg-offset-1">
+            <div class="alert alert-warning" role="alert">
+                <h4>Merci pour votre visite.</h4>
+                <h4>Redirection automatique vers l'accueil dans 5 secondes</h4>
             </div>
         </div>
-        <hr>
-        <div id="row">
-            <div class="col-lg-3 col-lg-offset-1">
-                    <h4><strong>Paiement de {{ ordres.montantReservation }}€ effectué.</strong></h4>
-                    <h6>(Un email vous a été envoyé qui sera à présenter à l'entrée du Musée).</h6>
-            </div>
-            <div class="col-lg-6 col-lg-offset-1">
-                <div class="alert alert-info" role="alert">
-                    <h5><strong>PAIEMENT ACCEPTE...</strong></h5>
-                    <h6>Merci pour votre visite</h6>
-                </div>
-            </div>
-        </div>
+    </div>
 
 {% endblock %}

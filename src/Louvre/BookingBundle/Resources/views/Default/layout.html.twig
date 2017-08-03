@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-
+    {% block metahttp %}
+    {% endblock %}
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {# lien BootStrap avec Theme Cerulean Bootswatch #}
@@ -93,28 +94,37 @@
                     </p>
                 </div>
                 <div class="panel-footer">
-                    Nombre de places disponibles pour aujourd'hui : <span class="new badge" data-badge-caption="places">345</span><br>
-                    A remplacer par la variable <code>place </code>
+                    <h4>Musée du Louvre</h4>
+                    <div id="logo">
+                        <img  src="{{ asset('images/logo_Louvre.jpg') }}" alt="Logo Louvre">
+                        <div>
+                            <p>
+                                <h5>Coordonnées :</h5>
+                                <span>Rue de Rivoli, 75001 Paris</span><br>
+                                <span> Téléphone : 01 40 20 50 50</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                    <strong>Informations complementaires</strong>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li><a><i class="material-icons">translate</i>Traduction</a></li>
-                        <li><a><i class="material-icons">grade</i>Favori</a></li>
-                        <li><a><i class="material-icons">question_answer</i>Nous contacter</a></li>
-                        <li><a><i class="material-icons">book</i>Site Institutionnel</a></li>
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <a href="#">Lien Eventuel</a>
-                </div>
-            </div>
+            {#<div class="panel panel-primary">#}
+                {#<div class="panel-heading">#}
+                    {#<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>#}
+                    {#<strong>Informations complementaires</strong>#}
+                {#</div>#}
+                {#<div class="panel-body">#}
+                    {#<ul>#}
+                        {#<li><a><i class="material-icons">translate</i>Traduction</a></li>#}
+                        {#<li><a><i class="material-icons">grade</i>Favori</a></li>#}
+                        {#<li><a><i class="material-icons">question_answer</i>Nous contacter</a></li>#}
+                        {#<li><a><i class="material-icons">book</i>Site Institutionnel</a></li>#}
+                    {#</ul>#}
+                {#</div>#}
+                {#<div class="panel-footer">#}
+                    {#<a href="#">Lien Eventuel</a>#}
+                {#</div>#}
+            {#</div>#}
         </aside>
         <!--  ************************* BLOC DROIT *************************************** -->
         <h4>Réservation de billet(s)</h4>

@@ -11,5 +11,15 @@ namespace Louvre\BookingBundle\Repository;
  */
 class ReservationRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function placeJours($date)
+    {
+        $query = $this->_em->createQueryBuilder()
+            ->select(count('r'))
+            ->where('r.dateVisite = :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getSingleResult()
+            ;
+        return $query;
+    }
 }
