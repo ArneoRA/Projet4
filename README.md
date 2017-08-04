@@ -127,4 +127,14 @@ Ce commit comprend :
 - Test d'envoi Ok
 - Scénario du retour à la page d'accueil automatique
 - Correction du fichier mydetail.js au niveau de la gestion du type de réservation en fonction de l'heure de la date de visite
+_____________________________________________________
 
+## 12eme Commit : Gestion du nombre de places Max à vendre par jour
+
+Ce commit comprend :
+- Création d'un **controleur API** pour gérer le nombre de places restant pour un jour donné
+- Création d'une **methode** dans le **Repository Reservation** retournant le nombre de places pour un jour donné
+- Création d'une Constante **BILLET_MAX** dans l'entité **Réservation**.
+- Test fonctionnel : OK
+- Modification de la vue **Booking.html.twig** pour insérer une alerte (fenetre modale) si le nombre de places sélectionné est trop important par rapport au nombre de places Max restant
+- Modification du fchier **mydetail.js** afin d'integrer l'appel AJAX et la fenetre modale pour l'alerte

@@ -26,6 +26,26 @@ $(document).ready(function(){
         {
             $('#louvre_bookingbundle_reservation_typeReservation').attr('disabled', false);
         }
+
+        // ///////////////// APPEL AJAX POUR RECUPERE NBRE DE PLACES DISPO POUR LE JOUR SELECTIONNE ///////////////
+        var dateV = $datevisite.split("/");
+        var dateA =dateV[2]+"-"+dateV[1]+"-"+dateV[0];
+        // console.log ('Valeur de dateV : ' + dateV);
+        // console.log ('valeur de dateA : ' + dateA);
+        $.ajax({
+            type: 'get',
+            format: 'json',
+            url: './api/' + dateA,
+            beforeSend: function(){
+                // console.log('Ca charge');
+            },
+            success: function(data){
+                // console.log ('Ca vient Tkt');
+                // console.log(data);
+                $("#nbplace").text(data);
+                $("#nbplaceM").text(data);
+            }
+        });
     });
 
     // ////////////////////////////// AJOUT D'AU MOINS 1 SOUS-FORMULAIRE PAR DEFAUT ///////////////////////////////////
@@ -45,17 +65,26 @@ $(document).ready(function(){
     var $nbrePlaces = $("#louvre_bookingbundle_reservation_nbrePlaces");
     // console.log($nbrePlaces);
     var indice = $nbrePlaces.val();
-    // console.log('valeur de indice : ' + indice);
+    console.log('valeur de indice : ' + indice);
     // ********* SUR CHANGEMENT Nbre de Places
     $nbrePlaces.on('change', function(e){
         e.preventDefault();
-        var indice = $("#louvre_bookingbundle_reservation_nbrePlaces").val()-1;
-        $container.empty();
-        index = 0
-        for (i = 0; i <= indice; i++ ) {
-            addDetail($container);
-            console.log('valeur de i : ' +i);
+        var placeMax = $("#nbplace").text();
+        console.log('valeur de PlaceMax : ' + placeMax);
+        console.log('valeur de place : ' + $nbrePlaces.val());
+        if ($nbrePlaces.val() > placeMax) {
+            // alert('Nombre de places sélectionné trop important par rapport au nombre de places restant !!');
+            $('#myAlert').modal('show');
+        } else {
+            var indice = $("#louvre_bookingbundle_reservation_nbrePlaces").val()-1;
+            $container.empty();
+            index = 0
+            for (i = 0; i <= indice; i++ ) {
+                addDetail($container);
+                console.log('valeur de i : ' +i);
+            }
         }
+
     });
     // /////////////////////// FONCTION addDetail ///////////////////////
     function addDetail($container) {
@@ -96,23 +125,5 @@ $(document).ready(function(){
         }
     });
 
-    // FONCTION PAS ENCORE UTILISEE
-    // $('#louvre_bookingbundle_reservation_dateVisite').blur(function(){
-    //     var dateV = $('#louvre_bookingbundle_reservation_dateVisite').val();
-    //     console.log ('Valeur de Date de visite : ' + dateV);
-    //     $.ajax({
-    //         type: 'get',
-    //         format: 'json',
-    //         url: 'http://localhost/Projet4/web/app_dev.php/subform/' + dateV,
-    //         beforeSend: function(){
-    //             console.log('Ca charge');
-    //         },
-    //         success: function(data){
-    //             console.log ('Ca vient Tkt');
-    //             // $("#nbplace").val(data[1]);
-    //
-    //         }
-    //     });
-    // });
 
 });

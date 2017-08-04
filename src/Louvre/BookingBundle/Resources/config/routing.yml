@@ -25,3 +25,7 @@ louvre_booking_checked:
 louvre_booking_mail:
     path:     /mail/{code}
     defaults: { _controller: LouvreBookingBundle:Order:testmail }
+
+louvre_booking_api:
+    path:     /api/{date}
+    defaults: { _controller: LouvreBookingBundle:Api:nbrePlace }
