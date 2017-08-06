@@ -138,3 +138,13 @@ Ce commit comprend :
 - Test fonctionnel : OK
 - Modification de la vue **Booking.html.twig** pour insérer une alerte (fenetre modale) si le nombre de places sélectionné est trop important par rapport au nombre de places Max restant
 - Modification du fchier **mydetail.js** afin d'integrer l'appel AJAX et la fenetre modale pour l'alerte
+
+_____________________________________________________
+
+## 13eme Commit : Gestion des Tests Unitaires et Fonctionnels
+
+Ce commit comprend :
+- Ajout du composant phpunit 5.6 dans notre fichier composer.json
+- Création dans le répertoire **Projet4/Tests** d'un **dossier Entity** pour effectuer les **tests unitaires** pour les entitées **Reservation** et **DetailReservation**.
+- Création dans le répertoire **Projet4/Tests** d'un **dossier Controller** pour effectuer les **tests fonctionnels** pour les controllers de mon projet.
+- Test Execution dans console OK 10/10 assertions 

@@ -23,4 +23,5 @@ class ApiController extends Controller
         $response = new Response($place);
         return $response;
     }
+
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2d902b6f-fc64-4105-8c97-320b0b209c98" name="OVH VPS" url="http://www.projet4.arnege.fr">
+        <fileTransfer host="vps441040.ovh.net" port="42142" rootFolder="/var/www/html" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="42142" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

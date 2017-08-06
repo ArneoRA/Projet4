@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="LOCAL DEV">
+    <serverData>
+      <paths name="LOCAL DEV">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/Projet4/web" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="OVH VPS">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Projet4" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

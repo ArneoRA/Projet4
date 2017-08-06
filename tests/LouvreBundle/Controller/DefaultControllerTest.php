@@ -2,16 +2,18 @@
 
 namespace LouvreBundle\Tests\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+
 
 class DefaultControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testIndexAction()
     {
         $client = static::createClient();
-
-        $crawler = $client->request('GET', '/');
-
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+        $crawler = $client->request('GET','/');
+        $this->assertEquals(1,  $crawler->filter('a:contains("Billeterie du Musée du Louvre")')->count());
     }
+
 }
