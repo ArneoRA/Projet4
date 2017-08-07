@@ -148,3 +148,11 @@ Ce commit comprend :
 - Création dans le répertoire **Projet4/Tests** d'un **dossier Entity** pour effectuer les **tests unitaires** pour les entitées **Reservation** et **DetailReservation**.
 - Création dans le répertoire **Projet4/Tests** d'un **dossier Controller** pour effectuer les **tests fonctionnels** pour les controllers de mon projet.
 - Test Execution dans console OK 10/10 assertions 
+
+_____________________________________________________
+
+## 14eme Commit : Personnalisation des pages d'erreur
+
+Ce commit comprend :
+- Remplacement des pages d'erreur **error.html.twig** de Twig Bundle dans le dossier  **App/Resources/TwigBundle/views/Exception**
+- Ajout des vues **error404.html.twig** et **error500.html.twig** pour les pages non trouvées

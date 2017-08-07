@@ -34,7 +34,10 @@
         "twig/twig": "^1.0||^2.0",
         "symfony/asset": "~2.8|3.0.*",
         "stripe/stripe-php": "4.*",
-        "coresphere/console-bundle": "~0.4"
+        "coresphere/console-bundle": "~0.4",
+        "symfony/assetic-bundle": "^2.7.1",
+        "leafo/scssphp": "~0.6",
+        "patchwork/jsqueeze": "~1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

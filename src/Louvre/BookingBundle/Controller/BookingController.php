@@ -87,6 +87,7 @@ class BookingController extends Controller
             'ordres' => $ordre,
             'details' => $details
         ));
+
     }
 
 
