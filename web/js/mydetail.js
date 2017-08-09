@@ -35,7 +35,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'get',
             format: 'json',
-            url: './api/' + dateA,
+            url: 'api/' + dateA,
             beforeSend: function(){
                 // console.log('Ca charge');
             },

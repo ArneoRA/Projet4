@@ -167,3 +167,14 @@ Ce commit comprend :
 - Ajout suite oubli de la date du 1er Mai comme étant férié. (fichier **mydatepicker.js**)
 - Modification du test fonctionnel de **BookingControllerTest.php**
 - Suppression du Bundle CoreSphereBundle qui est inutile avec mon VPS
+
+_____________________________________________________
+
+## 16eme Commit : 2eme Recettage
+
+Ce commit comprend :
+- Installation du Bundle Assetic
+- Suite Bug Cours Symfony OC, Désinstallation du Bundle Assetic
+- Vérification que lfichier app_dev.php et app.php soient accessibles
+- Correction de la requete **placeJours($date)** pour qu'elle somme correctement le nbre de places par date
+

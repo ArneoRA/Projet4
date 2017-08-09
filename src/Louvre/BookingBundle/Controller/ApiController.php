@@ -16,7 +16,6 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         $result = $em->getRepository('LouvreBookingBundle:Reservation')->placeJours($date);
         $place = Reservation::BILLET_MAX - $result;
-
         $response = new Response($place);
         return $response;
     }

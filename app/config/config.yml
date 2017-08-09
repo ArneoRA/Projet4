@@ -70,8 +70,3 @@ swiftmailer:
     password: '%mailer_password%'
     encryption: 'ssl'
 
-
-# Configuration minimale d'Assetic☺☺
-#assetic:
-#  debug:          '%kernel.debug%'
-#  use_controller: '%kernel.debug%'

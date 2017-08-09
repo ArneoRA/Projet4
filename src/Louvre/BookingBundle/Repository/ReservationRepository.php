@@ -14,7 +14,7 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
     public function placeJours($date)
     {
         $query = $this->createQueryBuilder('r')
-            ->select('COUNT(r.nbrePlaces)')
+            ->select('SUM(r.nbrePlaces)')
             ->where('r.dateVisite = :date')
             ->setParameter('date', $date)
             ->getQuery()
