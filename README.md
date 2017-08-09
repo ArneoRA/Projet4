@@ -156,3 +156,14 @@ _____________________________________________________
 Ce commit comprend :
 - Remplacement des pages d'erreur **error.html.twig** de Twig Bundle dans le dossier  **App/Resources/TwigBundle/views/Exception**
 - Ajout des vues **error404.html.twig** et **error500.html.twig** pour les pages non trouvées
+
+_____________________________________________________
+
+## 15eme Commit : 1er Recettage
+
+Ce commit comprend :
+- Modification du fichier **app_dev.php** afin qu'il accepte mon adresse IP sur le serveur de production.
+- Modification du fichier **mydetail.js** pour ajouter la vérification numérique des valeurs pour le test du nombre de place dispo.
+- Ajout suite oubli de la date du 1er Mai comme étant férié. (fichier **mydatepicker.js**)
+- Modification du test fonctionnel de **BookingControllerTest.php**
+- Suppression du Bundle CoreSphereBundle qui est inutile avec mon VPS

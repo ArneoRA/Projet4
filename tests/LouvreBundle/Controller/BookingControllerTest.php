@@ -9,11 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class BookingControllerTest extends WebTestCase
 {
+    // Test de chargement de la page
     public function testBookingAction()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET','/booking');
-        $this->assertEquals(1,  $crawler->filter('label:contains("Email du Réservant")')->count());
+        $client->request('GET','/booking');
+        $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
 }
