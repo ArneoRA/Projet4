@@ -1,11 +1,43 @@
+body {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
 /* AJUSTEMENT IMAGE D'ACCUEIL */
 .carousel-caption h1{
     color: white;
-    margin-bottom: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 25px;
+    background-color: rgba(25, 149, 220, 0.5);
+}
+
+/* AJUSTEMENT CSS NAVBAR */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    padding: 8px 0px;
+}
+.navbar-brand>img {
+    padding: 7px 14px;
+    width: 40%;
 }
 
 /* AJUSTEMENT CSS SOUS FORMULAIRE */
+
+section #subfrom{
+    background-color: #E3F2F9;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px dashed lightgrey;
+}
+
+
 #louvre_bookingbundle_reservation_Valider{
     display: none;
 }
@@ -30,10 +62,6 @@
     text-align: center;
 }
 
-/* AJUSTEMENT VUE EMAIL*/
-/*#logo {*/
-    /*background-image: url('./images/logo_Louvre.jpg');*/
-/*}*/
 
 /* CSS DEDIE AU FOOTER */
 footer{
@@ -56,4 +84,17 @@ footer p {
 footer a{
     color: white;
     font-weight: bolder;
+}
+
+/* AJUSTEMENT MEDIA QUERIES */
+@media screen and (min-width: 200px) and (max-width: 590px) {
+    .carousel-caption h1 {
+        font-size: small;
+    }
+}
+
+@media screen and (min-width: 590px) and (max-width: 768px) {
+    .carousel-caption h1 {
+        font-size: 25px;
+    }
 }

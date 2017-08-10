@@ -44,7 +44,7 @@ $(document).ready(function(){
                 // console.log(data);
                 $("#nbplace").text(data);
                 $("#nbplaceM").text(data);
-                console.log ('Voici la valeur de nbplaceMax apres MAJ de la date : ' + $('#nbplace').text());
+                // console.log ('Voici la valeur de nbplaceMax apres MAJ de la date : ' + $('#nbplace').text());
             }
         });
     });
@@ -67,13 +67,13 @@ $(document).ready(function(){
     var $nbrePlaces = $("#louvre_bookingbundle_reservation_nbrePlaces");
     // console.log($nbrePlaces);
     var indice = $nbrePlaces.val();
-    console.log('valeur de indice : ' + indice);
+    // console.log('valeur de indice : ' + indice);
     // ********* SUR CHANGEMENT Nbre de Places
     $nbrePlaces.on('change', function(e){
         e.preventDefault();
         var placeMax = $("#nbplace").text();
-        console.log('valeur de PlaceMax : ' + placeMax);
-        console.log('valeur de place : ' + $nbrePlaces.val());
+        // console.log('valeur de PlaceMax : ' + placeMax);
+        // console.log('valeur de place : ' + $nbrePlaces.val());
         if (parseInt($nbrePlaces.val()) > parseInt(placeMax)) {
             $('#myAlert').modal('show');
         } else {
@@ -82,7 +82,7 @@ $(document).ready(function(){
             index = 0
             for (i = 0; i <= indice; i++ ) {
                 addDetail($container);
-                console.log('valeur de i : ' +i);
+                // console.log('valeur de i : ' +i);
             }
         }
 

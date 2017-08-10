@@ -25,25 +25,25 @@
 <!--  ************************* HEADER *************************************** -->
 <header>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ar-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Billeterie du Musée du Louvre</a>
+                <a class="navbar-brand" href="#"><img  src="{{ asset('images/logo_Louvre3.png') }}" alt="Logo Louvre" class=" hidden-xs">Billeterie du Musée du Louvre</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="ar-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path('louvre_booking_homepage') }}">Acceuil</a></li>
+                    <li><a href="{{ path('louvre_booking_homepage') }}">Accueil</a></li>
                     <li><a href="{{ path('louvre_booking_booking') }}">Billeterie</a></li>
-                    <li><a href="#" >Nous contacter</a></li>
+                    <li class="disabled"><a href="#">Nous contacter</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -53,7 +53,7 @@
 <div class="container-fluid">
     <div class="row">
         <!--  ************************* BLOC GAUCHE *************************************** -->
-        <aside class="col-lg-3">
+        <aside class="col-lg-3 hidden-sm hidden-xs">
             <h4>Informations Billeterie</h4>
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -95,17 +95,9 @@
                     </p>
                 </div>
                 <div class="panel-footer">
-                    <h4>Musée du Louvre</h4>
-                    <div id="logo">
-                        <img  src="{{ asset('images/logo_Louvre.jpg') }}" alt="Logo Louvre">
-                        <div>
-                            <p>
-                                <h5>Coordonnées :</h5>
-                                <span>Rue de Rivoli, 75001 Paris</span><br>
-                                <span> Téléphone : 01 40 20 50 50</span>
-                            </p>
-                        </div>
-                    </div>
+                    <h5>Coordonnées :</h5>
+                    <span>Rue de Rivoli, 75001 Paris</span><br>
+                    <span> Téléphone : 01 40 20 50 50</span>
                 </div>
             </div>
         </aside>
@@ -122,7 +114,7 @@
     <!--  ************************* BLOC FOOTER *************************************** -->
     <div class="row navbar-fixed-bottom">
         <footer>
-            <p>© 2017<a href="www.arnege.fr"> Réalisation Arnege</a>, All rights reserved 2016-2017.</p>
+            <p>© 2017<a href="www.arnege.fr"> Réalisation Arnege</a></p>
             <p>Propulsé par Symfony 3.3 / BootStrap / Stripe</p>
         </footer>
     </div>

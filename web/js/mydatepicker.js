@@ -1,22 +1,25 @@
 $(function() {
-
-    // Initialisation du DatePicker
-    $('#louvre_bookingbundle_reservation_dateVisite').datetimepicker({
-        locale: 'fr',
-        format: 'L',
-        minDate: moment().add(-1,'days'),
-        // monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        // weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-        // today: 'Aujourd\'hui',
-        // clear: 'Effacer',
-        disabledDates: [
-            new Date(2017, 4, 1), // Désactive le 01/05/2017 (il faut le faire sur le mois précédent vu Doc Datepicker.js)
-            new Date(2017, 10, 1), // Désactive le 01/11/2017 (il faut le faire sur le mois précédent vu Doc Datepicker.js)
-            new Date(2017, 11, 25) // Désactive le 25/12/2017
-        ],
-        daysOfWeekDisabled: [2], // Désactive tous les mardis du calendrier
+    // Initialisation des variables nécessaires au traitement
+    var disDates =[];
+    // Execution de l'appel AJAX pour récupérer les dates à désactiver
+    $.ajax({
+        type: 'get',
+        data: 'json',
+        url: 'api_exclu',
+        success: function(data){
+            // Récupération des dates et ajout dans le tableau disDates
+            $.each(data, function(key, val){
+                // On transforme le timestamp en date au format Y-MM-DD et on l'ajoute à notre tableau de dates disDates
+                disDates.push(moment.unix(val).format('Y-MM-DD'));
+            });
+            // Initialisation du DatePicker avec la variable disDates pour l'option disabledDates
+            $('#louvre_bookingbundle_reservation_dateVisite').datetimepicker({
+                locale: 'fr',
+                format: 'L',
+                minDate: moment().add(-1,'days'),
+                disabledDates: disDates,
+                daysOfWeekDisabled: [2] // Désactive tous les mardis du calendrier
+            });
+        }
     });
-
-
-
 });

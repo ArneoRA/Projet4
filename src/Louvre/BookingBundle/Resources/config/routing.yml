@@ -29,3 +29,7 @@ louvre_booking_mail:
 louvre_booking_api:
     path:     /api/{date}
     defaults: { _controller: LouvreBookingBundle:Api:nbrePlace }
+
+louvre_booking_exclu:
+    path:     /api_exclu
+    defaults: { _controller: LouvreBookingBundle:Api:datesNoDispo }

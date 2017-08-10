@@ -22,10 +22,10 @@
             </div>
 
             <div class="col-md-2 col-md-offset-1">
-                {{ form_label(form.typeReservation, 'Demi-Journée à partir de 14h.') }}
+                {{ form_label(form.typeReservation) }}
                 {{ form_errors(form.typeReservation) }}
                 {{ form_widget(form.typeReservation) }}
-                <span id="infotype"></span>
+                Demi-Journée à partir de 14h. <span id="infotype"></span>
             </div>
             <div class="col-md-2 col-md-offset-1">
                 {{ form_label(form.nbrePlaces) }}
@@ -40,14 +40,12 @@
             </div>
 
         </div>
-        <hr>
         <div class="row">
             <div class="well" id="subfrom">
                 {{ form_widget(form.details)}}
             </div>
 
         </div>
-        <hr>
         <div class="row">
             {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
             {{ form_widget(form.Valider, {'attr': {

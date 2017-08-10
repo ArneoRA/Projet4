@@ -170,11 +170,25 @@ Ce commit comprend :
 
 _____________________________________________________
 
-## 16eme Commit : 2eme Recettage
+## 16eme Commit : 2eme Recettage - Correction Requete
 
 Ce commit comprend :
 - Installation du Bundle Assetic
 - Suite Bug Cours Symfony OC, Désinstallation du Bundle Assetic
-- Vérification que lfichier app_dev.php et app.php soient accessibles
+- Vérification que le fichier app_dev.php et app.php soient accessibles
 - Correction de la requete **placeJours($date)** pour qu'elle somme correctement le nbre de places par date
 
+_____________________________________________________
+
+## 17eme Commit : 
+
+Ce commit comprend :
+- Insertion du logo du Louvre dans la NavBar
+- Ajustement visuel du sous formulaire Visiteur
+- Modification de l'encart de gauche (Suppression du logo et du titre H5)
+- Ajustement de la partie Responsive (Traitement de l'encart de gauche et du logo de la Navbar)
+- Basculement de l'enregistrement du détails de la réservation sous forme de service (**Services/Traitements.php**).
+- Récupération **dynamique des dates à désactiver** pour le champ Date de Visite
+- Modification du fichier **mydatepicker.js** afin de prendre en compte l'appel AJAX nécessaire pour la récupération dynamique des dates à désactiver
+- Ajout d'une méthode dans **ReservationRepository.php** pour récupérer les dates à désactiver. 
+- Ajout d'une méthode dans ApiController.php (**datesNoDispoAction()**) permettant l'envoi des dates à désactiver

@@ -31,35 +31,19 @@ class BookingController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($resa);
                 $em->flush();
-                // TRAITEMENTS DES CHAMPS IDRESA et TARIF VISITEUR en fonction de la Date de Naissance
+                // MAJ DES INFOS SUR LES VISITEURS (Tarif, MAJ champ idresa et persist/Flush)
                 $detR = $resa->getDetails();
-                $montantR = 0;
-                foreach ($detR as $key => $value) {
-                    // MAJ IdResa
-                    $detR[$key]->setIdResa($resa->getId());
-                    // CALCUL Tarif en fonction de la Date de Naissance
-                    $type = $resa->getTypeReservation();
-                    $dt= $detR[$key]->getDateNaissance();
-                    $annee = $dt->format('Y');
-                    $reduit = $detR[$key]->getTarifReduit();
-                    $detR[$key]->setTarifVisiteur($services->getTarif($annee, $reduit, $type));
-                    // CUMUL TARIF
-                    $montantR +=$detR[$key]->getTarifVisiteur();
-                    // PERSIST Les MAJ
-                    $em->persist($detR[$key]);
-                    $em->flush();
-                }
-                // MAJ du Montant total de la réservation
+                $montantR = $services->setdetailVisiteurs($em, $resa, $detR);
+                // MAJ DU MONTANT TOTAL DE LA RESERVATION
                 $resa->setMontantReservation($montantR);
                 $em->persist($resa);
                 $em->flush();
-
+                // Redirection vers la page récapitulative
                 return $this->redirectToRoute('louvre_booking_view', array(
                     'id'    => $resa->getId()
                 ));
             }
         }
-
         return $this->render('LouvreBookingBundle:Booking:booking.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -69,7 +53,6 @@ class BookingController extends Controller
     public function testAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         // On affiche la réservation avec les visiteurs associés
         $ordre = $em->getRepository('LouvreBookingBundle:Reservation')->find($id);
         // On intercepte l'exception si la réservation n'existe pas

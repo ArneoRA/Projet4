@@ -19,7 +19,7 @@ class Reservation
     /**
      * Initialisation d'un constante pour gérer le nombre maximum de billets disponible pour 1 journée
      */
-    const BILLET_MAX = 1000;
+    const BILLET_MAX = 5;
 
     /**
      * @var int

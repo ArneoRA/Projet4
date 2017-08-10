@@ -61,4 +61,27 @@ class Traitements
 
         return $tarif;
     }
+
+    // Traitement Details réservation
+    public function setdetailVisiteurs($em, $resa, $detR)
+    {
+        $montantR = 0;
+        foreach ($detR as $key => $value) {
+            // MAJ du champ IdResa
+            $detR[$key]->setIdResa($resa->getId());
+            // CALCUL Tarif en fonction de la Date de Naissance
+            $type = $resa->getTypeReservation();
+            $dt= $detR[$key]->getDateNaissance();
+            $annee = $dt->format('Y');
+            $reduit = $detR[$key]->getTarifReduit();
+            $detR[$key]->setTarifVisiteur($this->getTarif($annee, $reduit, $type));
+            // CUMUL TARIF
+            $montantR +=$detR[$key]->getTarifVisiteur();
+            // PERSIST Les MAJ
+            $em->persist($detR[$key]);
+            $em->flush();
+        }
+        return $montantR;
+    }
+
 }

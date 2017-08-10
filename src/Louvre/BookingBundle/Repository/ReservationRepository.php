@@ -2,7 +2,7 @@
 
 namespace Louvre\BookingBundle\Repository;
 
-
+use Louvre\BookingBundle\Entity\Reservation;
 /**
  * ReservationRepository
  *
@@ -19,8 +19,18 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('date', $date)
             ->getQuery()
             ->getSingleScalarResult()
-            ;
+        ;
         return $query;
+    }
 
+    public function datesNonDispo()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select('r.dateVisite', 'SUM(r.nbrePlaces) as Places')
+            ->groupBy('r.dateVisite')
+            ->getQuery()
+            ->getScalarResult()
+        ;
+        return $query;
     }
 }
