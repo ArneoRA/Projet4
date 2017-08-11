@@ -180,7 +180,7 @@ Ce commit comprend :
 
 _____________________________________________________
 
-## 17eme Commit : 
+## 17eme Commit : Ameliorations et Gestion des dates avec Billet Max atteint
 
 Ce commit comprend :
 - Insertion du logo du Louvre dans la NavBar
@@ -192,3 +192,10 @@ Ce commit comprend :
 - Modification du fichier **mydatepicker.js** afin de prendre en compte l'appel AJAX nécessaire pour la récupération dynamique des dates à désactiver
 - Ajout d'une méthode dans **ReservationRepository.php** pour récupérer les dates à désactiver. 
 - Ajout d'une méthode dans ApiController.php (**datesNoDispoAction()**) permettant l'envoi des dates à désactiver
+_____________________________________________________
+
+## 18eme Commit : Dernier Recettage en date du 11-08-2017
+
+Ce commit comprend :
+- Choix **par défaut du Pays 'FRANCE'** / 'FR' dans le fichier **DetailReservationType.php**
+- Modification du range de l'année pour le champ **Date de Naissance** (Début = 1920) dans le fichier **DetailReservationType.php**

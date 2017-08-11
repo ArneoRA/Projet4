@@ -20,24 +20,15 @@ class DetailReservationType extends AbstractType
         $builder
             ->add('nomVisiteur', TextType::class)
             ->add('prenomVisiteur', TextType::class)
-            ->add('paysVisiteur', CountryType::class)
-            ->add('dateNaissance', BirthdayType::class)
+            ->add('paysVisiteur', CountryType::class, array(
+                'preferred_choices'  => array(
+                    'France'    => 'FR'
+                )
+            ))
+            ->add('dateNaissance', BirthdayType::class, array(
+                'years'     => range(1920, date('Y'))
+            ))
             ->add('tarifReduit', CheckboxType::class, array('required' => false))
-            // Valeur du Champ :
-            //      0 = Tarif normal
-            //      1 = Tarif réduit
-//            ->add('tarifvisiteur', TextType::class, array(
-//                'label'     => ' ', //Je masque le label pour ne pas le faire afficher
-//                'attr'      => array(
-//                    'class' => 'hidden')
-//                )
-//            )
-//            ->add('idResa', TextType::class, array(
-//                    'label'     => ' ', //Je masque le label pour ne pas le faire afficher
-//                    'attr'      => array(
-//                        'class' => 'hidden')
-//                )
-//            )
         ;
     }
     
