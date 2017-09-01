@@ -215,3 +215,14 @@ Ce commit comprend :
 - Ajout d'une info **server_version: 5.6** dans le bloc **DBAL** dans le fichier **app/config/config.yml**
 - Basculement des formulaires dans le répertoire **Form/Type**
 - Mise en commentaire des 2 variables non utilisées dans le répertoire DependencyInjection
+
+_____________________________________________________
+
+## 20eme Commit : Ajustements SensioLabs 2eme passe
+
+Ce commit comprend :
+- Suppression du fichier config.php du répertoire web
+- Mise en commentaire de Request::createFromGlobals();
+- Modification du code secret Symfony
+- Composer update pour basculer sur la version 3.3.8 de Symfony
+- Modification du nom de sesssion dans le fichier app/config.php

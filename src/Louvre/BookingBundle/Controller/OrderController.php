@@ -46,7 +46,7 @@ class OrderController extends Controller
     public function checkoutAction(Request $request)
     {
         \Stripe\Stripe::setApiKey("sk_test_158n98qYZ53ogoXzOfMZdQzo"); // Clé Secret Stripe
-        $request = Request::createFromGlobals();
+        //$request = Request::createFromGlobals();
 
         $em = $this->getDoctrine()->getManager();
         // Récupération des élements de paiement
