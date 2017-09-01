@@ -199,3 +199,19 @@ _____________________________________________________
 Ce commit comprend :
 - Choix **par défaut du Pays 'FRANCE'** / 'FR' dans le fichier **DetailReservationType.php**
 - Modification du range de l'année pour le champ **Date de Naissance** (Début = 1920) dans le fichier **DetailReservationType.php**
+
+_____________________________________________________
+
+## 19eme Commit : Ajustements SensioLabs + Bootstrap
+
+Ce commit comprend :
+- Déplacement d'un flush dans le fichier **Traitements.php**
+- Typage des variables **$em** et **$resa** de la méthode **setdetailVisiteurs()**
+- Inscription du fichier **config.php** dans le fichier **.gitignore** 
+- Intégration dans les tests PHPUnit du fichier **Services/TraitementsTest.php**
+- Ajustement du footer pour les petits smartphones : **layout.html.twig**
+- Ajustement de la bulle info pour les petits écrans : **projet4.css / layout.html.twig / mydetails.js / booking.html.twig**
+- Modification de OrderController.php pour ne plus utiliser **$_POST** mais **$request**
+- Ajout d'une info **server_version: 5.6** dans le bloc **DBAL** dans le fichier **app/config/config.yml**
+- Basculement des formulaires dans le répertoire **Form/Type**
+- Mise en commentaire des 2 variables non utilisées dans le répertoire DependencyInjection

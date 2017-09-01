@@ -3,7 +3,7 @@
 namespace Louvre\BookingBundle\Controller;
 
 use Louvre\BookingBundle\Entity\Reservation;
-use Louvre\BookingBundle\Form\ReservationType;
+use Louvre\BookingBundle\Form\Type\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;

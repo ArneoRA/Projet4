@@ -2,8 +2,8 @@
 
 namespace Louvre\BookingBundle\Services;
 
-//use Louvre\BookingBundle\Entity\Reservation;
-//use Symfony\Component\Validator\Constraints\Date;
+use Doctrine\ORM\EntityManager;
+use Louvre\BookingBundle\Entity\Reservation;
 
 
 class Traitements
@@ -63,7 +63,7 @@ class Traitements
     }
 
     // Traitement Details réservation
-    public function setdetailVisiteurs($em, $resa, $detR)
+    public function setdetailVisiteurs(EntityManager $em, Reservation $resa, $detR)
     {
         $montantR = 0;
         foreach ($detR as $key => $value) {
@@ -79,8 +79,8 @@ class Traitements
             $montantR +=$detR[$key]->getTarifVisiteur();
             // PERSIST Les MAJ
             $em->persist($detR[$key]);
-            $em->flush();
         }
+        $em->flush();
         return $montantR;
     }
 

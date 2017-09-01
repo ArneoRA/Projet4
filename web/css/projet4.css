@@ -37,10 +37,19 @@ section #subfrom{
     border-bottom: 2px dashed lightgrey;
 }
 
+/** bouton Tarif **/
+#tarif{
+    display: none;
+}
+
+#tarif:hover{
+    font-size: x-large;
+}
 
 #louvre_bookingbundle_reservation_Valider{
     display: none;
 }
+
 
 .form-horizontal .checkbox{
     margin-top:15px;
@@ -70,7 +79,7 @@ footer{
     bottom: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 60px;
     text-align: center;
     color: white;
 }
@@ -91,10 +100,19 @@ footer a{
     .carousel-caption h1 {
         font-size: small;
     }
+    footer p{
+        font-size: smaller;
+    }
+    #tarif{
+    display: inline;
+    }
 }
 
 @media screen and (min-width: 590px) and (max-width: 768px) {
     .carousel-caption h1 {
         font-size: 25px;
+    }
+    #tarif{
+    display: inline;
     }
 }

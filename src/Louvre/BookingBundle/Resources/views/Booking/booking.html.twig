@@ -89,6 +89,56 @@
     </div><!-- /.modal -->
 
 
+    {# Fenetre Modale pour les types de tarifs sur smartphone #}
+    <div class="modal fade" tabindex="-2" role="dialog" aria-labelledby="infoTarif" aria-hidden="true" data-backdrop="static" id="myInfo">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="infoTarif">Informations Billeterie du Louvre</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>Tarifications</h4>
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Normal</th>
+                            <th>Enfant *</th>
+                            <th>Senior</th>
+                            <th>Reduit **</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>Tarif Journée</th>
+                            <td>16€</td>
+                            <td>8€</td>
+                            <td>12€</td>
+                            <td>10€</td>
+                        </tr>
+                        <tr>
+                            <th>Tarif Demi-Journée</th>
+                            <td>8€</td>
+                            <td>4€</td>
+                            <td>6€</td>
+                            <td>5€</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <strong>*</strong> L’entrée est gratuite pour les enfants de moins de 4 ans.
+                    </p>
+                    <p>
+                        <strong>**</strong> Accordé dans certaines conditions (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…).
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
 
 {% endblock %}

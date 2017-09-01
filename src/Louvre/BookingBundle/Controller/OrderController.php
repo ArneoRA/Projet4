@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Louvre\BookingBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Formatter\LineFormatter;
 
 class OrderController extends Controller
 {
@@ -43,14 +46,14 @@ class OrderController extends Controller
     public function checkoutAction(Request $request)
     {
         \Stripe\Stripe::setApiKey("sk_test_158n98qYZ53ogoXzOfMZdQzo"); // Clé Secret Stripe
+        $request = Request::createFromGlobals();
 
         $em = $this->getDoctrine()->getManager();
         // Récupération des élements de paiement
-        $token = $_POST['stripeToken'];
-        $email = $_POST['stripeEmail']; // Récupérée depuis Stripe
-        $montant = $_POST['montant'];
-        $id = $_POST['idRes'];
-
+        $token = $request->request->get('stripeToken');
+        $email = $request->request->get('stripeEmail'); // Récupérée depuis Stripe
+        $montant = $request->request->get('montant');
+        $id = $request->request->get('idRes');
         // Créer une charge: cela facturera la carte de l'utilisateur
         try {
             $charge = \Stripe\Charge::create(array(
@@ -59,13 +62,21 @@ class OrderController extends Controller
                 "source" => $token,
                 "description" => 'Paiement Stripe de : '. $montant . '€ pour la réservation de l\'adresse Email : ' . $email
             ));
+            // Inscription de l'échange dans le fichier log
+            $dateFormat = "Y-m-d H:i:s";
+            $output = "[%datetime%] [%channel%] [%level_name%] %message% %context% \n";
+            $formatter = new LineFormatter($output, $dateFormat);
+            $streamHandler = new StreamHandler('/var/logs/charges.log', Logger::INFO);
+            $streamHandler->setFormatter($formatter);
+            $log = new Logger('CHARGE');
+            $log->pushHandler($streamHandler);
+            $log->addDebug('Contenu de la charge : ' . $charge);
+
             // MAJ du Montant total de la réservation
             $resa = $em->getRepository('LouvreBookingBundle:Reservation')->find($id);
-            var_dump($resa->getValided());
             $resa->setValided(true);
             $em->persist($resa);
             $em->flush();
-            var_dump($resa->getValided());
             return $this->redirectToRoute('louvre_booking_checked', array('code' =>$resa->getCodeReservation()));
 
         } catch(\Stripe\Error\Card $e) {

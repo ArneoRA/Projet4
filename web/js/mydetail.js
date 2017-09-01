@@ -126,5 +126,12 @@ $(document).ready(function(){
         }
     });
 
+    // Affichage des tarifications sur les petits smartphones
+    $('#reserBillet').on('click', function(e){
+        e.preventDefault();
+        $('#myInfo').modal('show');
+    });
+
+
 
 });

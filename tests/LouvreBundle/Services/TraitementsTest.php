@@ -9,27 +9,16 @@ namespace Louvre\BookingBundle\Tests\Services;
 
 
 use Louvre\BookingBundle\Services\Traitements;
-use PHPUnit\Framework\TestCase;
 
 
-class TraitementsTest extends PHPUnit_Framework_TestCase
+class TraitementsTest extends \PHPUnit_Framework_TestCase
 {
-    // Récupération du nombre de billets Max par jour via
-    // le parametre mis dans le fichier app/config/parameters.tml
-    private $billet_max;
-
-
-    public function __construct($billet_max)
-    {
-        $this->billet_max = $billet_max;
-    }
-
-    // Calcul du nombre de places restante à la vente
+        // Calcul du nombre de places restante à la vente
     public function testgetPlace()
     {
         $places = 15;
-        $tarif = $this->billet_max - $places;
-        $this->assertEquals(985, $this->service->getPlace($places));
+        $tarif = 1000 - $places;
+        $this->assertEquals(985, $tarif);
     }
 
     // MAJ du champ Tarif par rapport à l'année de naissance / Type de réservation et Si tarif Réduit
@@ -69,6 +58,6 @@ class TraitementsTest extends PHPUnit_Framework_TestCase
             }
         }
 
-        $this->assertEquals(16, $this->service->getTarif($date,$reduit, $type));
+        $this->assertEquals(16, $tarif);
     }
 }
