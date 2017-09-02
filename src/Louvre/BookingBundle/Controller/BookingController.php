@@ -33,7 +33,7 @@ class BookingController extends Controller
                 $em->flush();
                 // MAJ DES INFOS SUR LES VISITEURS (Tarif, MAJ champ idresa et persist/Flush)
                 $detR = $resa->getDetails();
-                $montantR = $services->setdetailVisiteurs($em, $resa, $detR);
+                $montantR = $services->setdetailVisiteurs($resa, $detR);
                 // MAJ DU MONTANT TOTAL DE LA RESERVATION
                 $resa->setMontantReservation($montantR);
                 $em->persist($resa);

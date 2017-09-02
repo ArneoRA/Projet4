@@ -38,7 +38,7 @@ class ApiController extends Controller
         foreach ($listDates as $key => $val) {
             // Test du Nbre de places total
             if ($val['Places']== Reservation::BILLET_MAX){
-                // Si Places également Billet Max, on ajoute la date dans notre variable
+                // Si Places égal Billet Max, on ajoute la date dans notre variable
                 array_push($exclus, strtotime($val['dateVisite']));
             };
         }

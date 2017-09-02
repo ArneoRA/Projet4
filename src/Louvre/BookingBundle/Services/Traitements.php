@@ -12,10 +12,13 @@ class Traitements
     // le parametre mis dans le fichier app/config/parameters.yml
     private $billet_max;
 
+    // Utilisation d'EntityManager dans les méthodes de ma class Traitement
+    protected $em;
 
-    public function __construct($billet_max)
+    public function __construct($billet_max, EntityManager $em)
     {
         $this->billet_max = $billet_max;
+        $this->em = $em;
     }
 
     // Calcul du nombre de places restante à la vente
@@ -63,7 +66,7 @@ class Traitements
     }
 
     // Traitement Details réservation
-    public function setdetailVisiteurs(EntityManager $em, Reservation $resa, $detR)
+    public function setdetailVisiteurs(Reservation $resa, $detR)
     {
 
         $montantR = 0;
@@ -79,9 +82,9 @@ class Traitements
             // CUMUL TARIF
             $montantR +=$detR[$key]->getTarifVisiteur();
             // PERSIST Les MAJ
-            $em->persist($detR[$key]);
+            $this->em->persist($detR[$key]);
         }
-        $em->flush();
+        $this->em->flush();
         return $montantR;
     }
 

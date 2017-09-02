@@ -236,3 +236,14 @@ Ce commit comprend :
 - Rectification du code secret dans le fichier parameters.yml pour le modifier dans le fichier parameters.yml.dist
 - Modification du fichier .gitignore en remettant la ligne : /app/config/parameters.yml
 
+_____________________________________________________
+
+## 22eme Commit : Ajustements SensioLabs 4eme passe
+
+Ce commit comprend :
+- Modification du fichier **Resources/services.yml** afin d'ajouter Doctrine/EntityManager en parametre.
+- Modification du fichier **Services/Traitements.php** afin d'ajouter EntityManager dans le constructeur.
+- Modification de la méthode **setdetailVisiteurs()** en retirant le parametre $em.
+- Modification du fichier de la méthode **bookingAction()** de **BookingController.php** en retirant le parametre $em.
+
+

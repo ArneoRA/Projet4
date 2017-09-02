@@ -2,5 +2,4 @@ services:
     Louvre_Booking.Traitements:
 #        resources: '../../src/Louvre/BookingBundle/Services/*'
         class: Louvre\BookingBundle\Services\Traitements
-        arguments:
-            - billet_max
+        arguments: [billet_max , "@doctrine.orm.entity_manager"]
