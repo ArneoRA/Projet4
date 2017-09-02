@@ -222,7 +222,10 @@ _____________________________________________________
 
 Ce commit comprend :
 - Suppression du fichier config.php du répertoire web
-- Mise en commentaire de Request::createFromGlobals();
-- Modification du code secret Symfony
+- Suppression de Request::createFromGlobals(); dans le fichier OrderController.php
 - Composer update pour basculer sur la version 3.3.8 de Symfony
-- Modification du nom de sesssion dans le fichier app/config.php
+- Modification du nom de session dans le fichier app/config.php
+- Modification du code secret Symfony dans le fichier parameters.yml
+- Suppression dans le fichier .gitignore de la ligne : /app/config/parameters.yml
+
+

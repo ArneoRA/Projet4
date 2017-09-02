@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: louvre
+    database_user: php
+    database_password: 1234
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: arneo.42@gmail.com
+    mailer_password: Arnege280701
+    secret: 005edad032beafe5654cd75341c9a7af6549bb51

@@ -9,7 +9,7 @@ use Louvre\BookingBundle\Entity\Reservation;
 class Traitements
 {
     // Récupération du nombre de billets Max par jour via
-    // le parametre mis dans le fichier app/config/parameters.tml
+    // le parametre mis dans le fichier app/config/parameters.yml
     private $billet_max;
 
 
@@ -65,6 +65,7 @@ class Traitements
     // Traitement Details réservation
     public function setdetailVisiteurs(EntityManager $em, Reservation $resa, $detR)
     {
+
         $montantR = 0;
         foreach ($detR as $key => $value) {
             // MAJ du champ IdResa
