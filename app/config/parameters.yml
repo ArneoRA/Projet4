@@ -9,4 +9,4 @@ parameters:
     mailer_host: smtp.gmail.com
     mailer_user: arneo.42@gmail.com
     mailer_password: Arnege280701
-    secret: 005edad032beafe5654cd75341c9a7af6549bb51
+    secret: 0ac8e3c6146416b25c3d625ea133ce40b3424775

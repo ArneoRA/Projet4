@@ -228,4 +228,11 @@ Ce commit comprend :
 - Modification du code secret Symfony dans le fichier parameters.yml
 - Suppression dans le fichier .gitignore de la ligne : /app/config/parameters.yml
 
+_____________________________________________________
+
+## 21eme Commit : Ajustements SensioLabs 3eme passe
+
+Ce commit comprend :
+- Rectification du code secret dans le fichier parameters.yml pour le modifier dans le fichier parameters.yml.dist
+- Modification du fichier .gitignore en remettant la ligne : /app/config/parameters.yml
 
