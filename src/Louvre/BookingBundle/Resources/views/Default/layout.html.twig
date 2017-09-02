@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img  src="{{ asset('images/logo_Louvre3.png') }}" alt="Logo Louvre" class=" hidden-xs">Billeterie du Musée du Louvre</a>
+                <a class="navbar-brand" href="{{ path('louvre_booking_homepage') }}"><img  src="{{ asset('images/logo_Louvre3.png') }}" alt="Logo Louvre" class=" hidden-xs">Billeterie du Musée du Louvre</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,6 +44,7 @@
                     <li><a href="{{ path('louvre_booking_homepage') }}">Accueil</a></li>
                     <li><a href="{{ path('louvre_booking_booking') }}">Billeterie</a></li>
                     <li class="disabled"><a href="#">Nous contacter</a></li>
+                    <li><a href="{{ path('louvre_booking_mentions') }}">Mentions légales</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -99,6 +100,9 @@
                     <span>Rue de Rivoli, 75001 Paris</span><br>
                     <span> Téléphone : 01 40 20 50 50</span>
                 </div>
+            </div>
+            <div class="sensio">
+                <img src="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/small.png" alt="Label SensioLabs">
             </div>
         </aside>
         <!--  ************************* BLOC DROIT *************************************** -->

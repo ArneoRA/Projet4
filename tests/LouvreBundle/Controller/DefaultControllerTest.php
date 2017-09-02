@@ -16,4 +16,10 @@ class DefaultControllerTest extends WebTestCase
         $this->assertEquals(1,  $crawler->filter('a:contains("Billeterie du Musée du Louvre")')->count());
     }
 
+    public function testMentionsAction()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET','/mentions');
+        $this->assertEquals(1,  $crawler->filter('h3:contains("Mentions légales")')->count());
+    }
 }

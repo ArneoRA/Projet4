@@ -246,4 +246,13 @@ Ce commit comprend :
 - Modification de la méthode **setdetailVisiteurs()** en retirant le parametre $em.
 - Modification du fichier de la méthode **bookingAction()** de **BookingController.php** en retirant le parametre $em.
 
+_____________________________________________________
 
+## 23eme Commit : Recettage et ajout des Mentions légales
+
+Ce commit comprend :
+- Ajout de la route **louvre_booking_mentions** dans le fichier **routing.yml**
+- Ajout d'une page Mentions légales générées via le site www.generer-mentions-legales.com : **Mentions/mentions.html.twig**
+- Modification du menu principal
+- Modification des fichiers d'erreur
+- Ajout de la nouvelle route dans le test fonctionnel

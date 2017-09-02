@@ -12,4 +12,10 @@ class DefaultController extends Controller
         return $this->render('LouvreBookingBundle:Home:home.html.twig');
     }
 
+    public function mentionsAction()
+    {
+
+        return $this->render('LouvreBookingBundle:Mentions:mentions.html.twig');
+    }
+
 }
