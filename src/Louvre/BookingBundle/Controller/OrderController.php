@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-use Monolog\Formatter\LineFormatter;
 
 class OrderController extends Controller
 {
@@ -63,12 +62,8 @@ class OrderController extends Controller
             ));
             // Inscription de l'échange dans le fichier log
             $logger = new Logger('charge');
-            // Formattage du log
-            $dateFormat = "Y-m-d H:i:s";
-            $output = "[%datetime%] [%channel%] [%level_name%] %message% %context% \n";
-            $formatter = new LineFormatter($output, $dateFormat);
             // Création du channel
-            $logger->pushHandler(new StreamHandler('/var/logs/charges.log', Logger::NOTICE));
+            $logger->pushHandler(new StreamHandler('./var/logs/charges.log', Logger::NOTICE));
             // Enregistrement dans la log
             $logger->addNotice('Contenu de la charge : ' . $charge);
 

@@ -270,3 +270,11 @@ Ce commit comprend :
 - Ajout des contraintes par Annotation dans les entités **Reservation** et **DetailReservation**
 - Ajout du test sur les champs **Nom et Prenom du Sous-formulaire** : fichier **mydetails.js**
 - Ajustement de l'ensemble des views
+
+_____________________________________________________
+
+## 25eme Commit : Réajustement SensioLabs
+
+Ce commit comprend :
+- Modification fichier .gitignore : /.idea/
+- Suppression d'une variable non utilisée dans OrderController.php
