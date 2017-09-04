@@ -32,7 +32,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ path('louvre_booking_homepage') }}">Accueil</a></li>
                     <li><a href="{{ path('louvre_booking_booking') }}">Billeterie</a></li>
-                    <li class="disabled"><a href="#">Nous contacter</a></li>
+                    <li><a href="{{ path('louvre_booking_contact') }}">Nous contacter</a></li>
                     <li><a href="{{ path('louvre_booking_mentions') }}">Mentions légales</a></li>
                 </ul>
             </div>
@@ -81,7 +81,7 @@
                         <strong>*</strong> L’entrée est gratuite pour les enfants de moins de 4 ans.
                     </p>
                     <p>
-                        <strong>**</strong> Accordé dans certaines conditions (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…).
+                        <strong>**</strong>Accordé sous présentation d'une carte de type (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…).
                     </p>
                 </div>
                 <div class="panel-footer">
@@ -117,6 +117,7 @@
     </div>
 
     <!--  ************************* BLOC JAVASCRIPT *************************************** -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 

@@ -56,6 +56,7 @@ class Reservation
     /**
      * @var string
      * @ORM\Column(name="Email_client", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $emailClient;
 

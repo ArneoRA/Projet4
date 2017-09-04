@@ -1,0 +1,27 @@
+{# src/Louvre/BookingBundle/Resources/views/Default/contact.html.twig #}
+
+{% extends "LouvreBookingBundle:Default:layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Contact
+{% endblock %}
+
+{% block BookingBundle_content %}
+<h4 id="reserBillet">Bienvenue sur la Billetterie Non Officielle</h4>
+<section class="well col-lg-9">
+    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <img class="img-responsive" src="{{ asset('images/Louvre_2.jpg') }}" alt="Photo du Musée">
+                <div class="carousel-caption">
+                    <h1>MUSEE DU LOUVRE<br>
+                        Rue de Rivoli, 75001 Paris<br>
+                        Téléphone : 01 40 20 50 50
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

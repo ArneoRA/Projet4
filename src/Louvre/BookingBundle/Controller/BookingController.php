@@ -16,7 +16,7 @@ class BookingController extends Controller
     {
         // Déclaration des différents éléments de base
         $resa = new Reservation();
-        ////// Service Traitements
+        /// Service Traitements
         $services = $this->container->get('Louvre_Booking.Traitements');
 
         // Création du formulaire réservation

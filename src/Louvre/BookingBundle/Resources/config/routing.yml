@@ -1,3 +1,4 @@
+# ===================== Routes DefaultController ==================================
 louvre_booking_homepage:
     path:     /
     defaults: { _controller: LouvreBookingBundle:Default:index }
@@ -6,6 +7,11 @@ louvre_booking_mentions:
     path:     /mentions
     defaults: { _controller: LouvreBookingBundle:Default:mentions }
 
+louvre_booking_contact:
+    path:     /contact
+    defaults: { _controller: LouvreBookingBundle:Default:contact }
+
+# ===================== Routes BookingController ==================================
 louvre_booking_booking:
     path:     /booking
     defaults: { _controller: LouvreBookingBundle:Booking:booking }
@@ -14,6 +20,7 @@ louvre_booking_test:
     path:     /test/{id}
     defaults: { _controller: LouvreBookingBundle:Booking:test }
 
+# ===================== Routes OrderController ==================================
 louvre_booking_view:
     path:     /order/{id}
     defaults: { _controller: LouvreBookingBundle:Order:view }
@@ -30,6 +37,7 @@ louvre_booking_mail:
     path:     /mail/{code}
     defaults: { _controller: LouvreBookingBundle:Order:testmail }
 
+# ===================== Routes ApiController ==================================
 louvre_booking_api:
     path:     /api/{date}
     defaults: { _controller: LouvreBookingBundle:Api:nbrePlace }

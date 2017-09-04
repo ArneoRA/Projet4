@@ -22,4 +22,12 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->request('GET','/mentions');
         $this->assertEquals(1,  $crawler->filter('h3:contains("Mentions légales")')->count());
     }
+
+    public function testContactAction()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET','/contact');
+        $this->assertEquals(1,  $crawler->filter('h1:contains("LOUVRE")')->count());
+    }
+
 }

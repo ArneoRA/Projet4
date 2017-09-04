@@ -1,4 +1,4 @@
-{# src/Louvre/BookingBundle/Resources/views/Home/home.html.twig #}
+{# src/Louvre/BookingBundle/Resources/views/Default/home.html.twig #}
 
 {% extends "LouvreBookingBundle:Default:layout.html.twig" %}
 
@@ -7,16 +7,18 @@
 {% endblock %}
 
 {% block BookingBundle_content %}
+    <h4 id="reserBillet">Bienvenue sur la Billetterie Non Officielle</h4>
+    <section class="well col-lg-9">
     <div id="mycarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="item active">
                     <img class="img-responsive" src="{{ asset('images/Louvre_1.jpg') }}" alt="Photo du Musée">
                 <div class="carousel-caption">
-                    <h1>Bienvenue sur le nouveau système de réservation en ligne du Musée du Louvre !!</h1>
+                    <h1>Nouveau système de réservation en ligne du Musée du Louvre !!</h1>
                 </div>
             </div>
         </div>
-
+    </div>
 </section>
 
 {% endblock %}

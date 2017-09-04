@@ -37,6 +37,11 @@ section #subfrom{
     border-bottom: 2px dashed lightgrey;
 }
 
+/** TABLEAU TARIF **/
+.table>thead>tr>th{
+    padding: 0px;
+}
+
 /** bouton Tarif **/
 #tarif{
     display: none;

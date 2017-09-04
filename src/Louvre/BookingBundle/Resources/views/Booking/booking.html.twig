@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block BookingBundle_content %}
-
+<h4 id="reserBillet">Réservation de billet(s) <span class="glyphicon glyphicon-info-sign" id="tarif"></span></h4>
+<section class="well col-lg-9">
         {#{{ form(form) }}#}
 
         {{ form_start(form, {'attr': {
@@ -42,7 +43,7 @@
         </div>
         <div class="row">
             <div class="well" id="subfrom">
-                {{ form_widget(form.details)}}
+                {{ form_widget(form.details) }}
             </div>
 
         </div>
@@ -129,7 +130,7 @@
                         <strong>*</strong> L’entrée est gratuite pour les enfants de moins de 4 ans.
                     </p>
                     <p>
-                        <strong>**</strong> Accordé dans certaines conditions (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…).
+                        <strong>**</strong> Accordé sous présentation d'une carte de type (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…).
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -138,7 +139,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
+</section>
 
 
 {% endblock %}

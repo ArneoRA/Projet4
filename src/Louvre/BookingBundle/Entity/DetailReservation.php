@@ -4,6 +4,7 @@ namespace Louvre\BookingBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -27,12 +28,14 @@ class DetailReservation
     /**
      * @var string
      * @ORM\Column(name="Nom_Visiteur", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $nomVisiteur;
 
     /**
      * @var string
      * @ORM\Column(name="Prenom_Visiteur", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $prenomVisiteur;
 

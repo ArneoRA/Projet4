@@ -256,3 +256,17 @@ Ce commit comprend :
 - Modification du menu principal
 - Modification des fichiers d'erreur
 - Ajout de la nouvelle route dans le test fonctionnel
+
+_____________________________________________________
+
+## 24eme Commit : Derniers ajustements suite session Mentoring du 04-09-2017
+
+Ce commit comprend :
+- Modification texte d'accompagnement types de tarifs
+- Correction d'un message d'erreur JS dans la console : fichiers **mydetail.js** & **mydatepicker.js**
+- Correction du tableau des tarifs (Probleme de responsivité)
+- Ajout d'une page simple "Nous contacter" qui pourra être remplacer par un formulaire plus complet dans le cadre de la création d'un BackEnd.
+- Ajout du test fonctionnel associé à la page contact
+- Ajout des contraintes par Annotation dans les entités **Reservation** et **DetailReservation**
+- Ajout du test sur les champs **Nom et Prenom du Sous-formulaire** : fichier **mydetails.js**
+- Ajustement de l'ensemble des views

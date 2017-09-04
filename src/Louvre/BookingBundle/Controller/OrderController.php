@@ -62,14 +62,15 @@ class OrderController extends Controller
                 "description" => 'Paiement Stripe de : '. $montant . '€ pour la réservation de l\'adresse Email : ' . $email
             ));
             // Inscription de l'échange dans le fichier log
+            $logger = new Logger('charge');
+            // Formattage du log
             $dateFormat = "Y-m-d H:i:s";
             $output = "[%datetime%] [%channel%] [%level_name%] %message% %context% \n";
             $formatter = new LineFormatter($output, $dateFormat);
-            $streamHandler = new StreamHandler('/var/logs/charges.log', Logger::INFO);
-            $streamHandler->setFormatter($formatter);
-            $log = new Logger('CHARGE');
-            $log->pushHandler($streamHandler);
-            $log->addDebug('Contenu de la charge : ' . $charge);
+            // Création du channel
+            $logger->pushHandler(new StreamHandler('/var/logs/charges.log', Logger::NOTICE));
+            // Enregistrement dans la log
+            $logger->addNotice('Contenu de la charge : ' . $charge);
 
             // MAJ du Montant total de la réservation
             $resa = $em->getRepository('LouvreBookingBundle:Reservation')->find($id);
