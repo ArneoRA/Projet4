@@ -108,6 +108,7 @@ $(document).ready(function(){
                 // Ajout de la class has-error pour indiquer à l'utilisateur quel champ n'est pas valide
                 nomV.parent().addClass('has-error');
                 prenomV.parent().removeClass('has-error');
+                nomV.attr("placeholder", "Nom Obligatoire");
                 // Bloque l'envoi du formulaire
                 return false;
             // Test sur le contenu du Prenom
@@ -115,6 +116,7 @@ $(document).ready(function(){
                 // Ajout de la class has-error pour indiquer à l'utilisateur quel champ n'est pas valide
                 prenomV.parent().addClass('has-error');
                 nomV.parent().removeClass('has-error');
+                prenomV.attr("placeholder", "Prenom Obligatoire");
                 // Bloque l'envoi du formulaire
                 return false;
             }

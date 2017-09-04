@@ -115,6 +115,7 @@ footer a{
     .well{
         padding: 4px;
     }
+
 }
 
 @media screen and (min-width: 590px) and (max-width: 768px) {
@@ -124,4 +125,9 @@ footer a{
     #tarif{
     display: inline;
     }
+
+    .well{
+        padding: 4px;
+    }
+
 }

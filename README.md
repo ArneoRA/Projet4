@@ -286,3 +286,9 @@ _____________________________________________________
 Ce commit comprend :
 - Modification fichier .gitignore : **/.idea/**
 
+_____________________________________________________
+
+## 27eme Commit : Réajustement SensioLabs Medaille Argent => Or 2eme passe
+
+Ce commit comprend :
+- Suppression de .gitignore : /.idea/
