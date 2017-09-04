@@ -278,3 +278,11 @@ _____________________________________________________
 Ce commit comprend :
 - Modification fichier .gitignore : /.idea/
 - Suppression d'une variable non utilisée dans OrderController.php
+
+_____________________________________________________
+
+## 26eme Commit : Réajustement SensioLabs Medaille Argent => Or
+
+Ce commit comprend :
+- Modification fichier .gitignore : **/.idea/**
+
