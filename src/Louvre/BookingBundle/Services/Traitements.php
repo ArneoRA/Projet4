@@ -37,24 +37,30 @@ class Traitements
         $tarif = 0;
 
         if($reduit == 1){                                // Tarif réduit 10€ / 5€
-            if ($type == 1) {
+            if ($diff >= 4 && $diff < 12) {                // Test si Enfant entre 4 et 12ans Pas de tarif réduit
+                if ($type == 1) {
+                    $tarif = 8;
+                } else {
+                    $tarif = 4;
+                }
+            } elseif ($type == 1) {
                 $tarif = 10;
             } else {
                 $tarif = 5;
             }
-        }elseif ($diff > 4 && $diff < 12){                // à partir de 4 ans et jusqu’à 12 ans Tarif 8 € / 4€
+        }elseif ($diff >= 4 && $diff < 12){                // à partir de 4 ans et jusqu’à 12 ans Tarif 8 € / 4€
             if ($type == 1) {
                 $tarif = 8;
             } else {
                 $tarif = 4;
             }
-        } elseif ($diff > 12 && $diff < 60){             // à partir de 12 ans à 16 € Tarif 16€ / 8€
+        } elseif ($diff >= 12 && $diff < 60){             // à partir de 12 ans à 16 € Tarif 16€ / 8€
             if ($type == 1) {
                 $tarif = 16;
             } else {
                 $tarif = 8;
             }
-        } elseif ($diff > 60){                          // à partir de 60 ans Tarif 12€ / 6%
+        } elseif ($diff >= 60){                          // à partir de 60 ans Tarif 12€ / 6%
             if ($type == 1) {
                 $tarif = 12;
             } else {

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysis>
+  <link href="https://insight.sensiolabs.com/api/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16" rel="self" type="application/vnd.com.sensiolabs.insight+xml"/>
+  <link href="https://insight.sensiolabs.com/api/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16/status" rel="status" type="application/vnd.com.sensiolabs.insight+xml"/>
+  <link href="https://insight.sensiolabs.com/api/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346" rel="project" type="application/vnd.com.sensiolabs.insight+xml"/>
+  <link href="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16" rel="self" type="text/html"/>
+  <status><![CDATA[finished]]></status>
+  <violations>
+    <violation severity="info" category="bugrisk" ignored="false">
+      <line>0</line>
+      <resource><![CDATA[composer.json]]></resource>
+      <title>The composer.json file should not raise warnings</title>
+      <message><![CDATA[Defining autoload.psr-4 with an empty namespace prefix is a bad idea for performance]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16?status=existing#548089424" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="architecture" ignored="false">
+      <line>0</line>
+      <resource><![CDATA[]]></resource>
+      <title>Deprecated class found in service definition</title>
+      <message><![CDATA[The event_dispatcher service uses the Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher class, which has been deprecated in Symfony 3.3. Use the Symfony\Component\EventDispatcher\EventDispatcher class instead.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16?status=existing#548089425" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="performance" ignored="false">
+      <line>0</line>
+      <resource><![CDATA[app/.htaccess]]></resource>
+      <title>.htaccess should be avoided</title>
+      <message><![CDATA[A .htaccess file has been spotted. You should consider moving it to the server configuration to improve global performances.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16?status=existing#548089423" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="performance" ignored="false">
+      <line>0</line>
+      <resource><![CDATA[src/.htaccess]]></resource>
+      <title>.htaccess should be avoided</title>
+      <message><![CDATA[A .htaccess file has been spotted. You should consider moving it to the server configuration to improve global performances.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16?status=existing#548089422" rel="self" type="text/html"/>
+    </violation>
+    <violation severity="info" category="performance" ignored="false">
+      <line>0</line>
+      <resource><![CDATA[web/.htaccess]]></resource>
+      <title>.htaccess should be avoided</title>
+      <message><![CDATA[A .htaccess file has been spotted. You should consider moving it to the server configuration to improve global performances.]]></message>
+      <context/>
+      <link href="https://insight.sensiolabs.com/projects/9fcb35b9-dcf6-4eb3-8e06-27625261c346/analyses/16?status=existing#548089421" rel="self" type="text/html"/>
+    </violation>
+  </violations>
+  <grades>
+    <entry><![CDATA[none]]></entry>
+    <entry><![CDATA[bronze]]></entry>
+    <entry><![CDATA[silver]]></entry>
+    <entry><![CDATA[gold]]></entry>
+    <entry><![CDATA[platinum]]></entry>
+  </grades>
+  <failed>false</failed>
+  <grade><![CDATA[gold]]></grade>
+  <next-grade><![CDATA[platinum]]></next-grade>
+  <begin-at><![CDATA[2017-09-04T20:44:16+0200]]></begin-at>
+  <end-at><![CDATA[2017-09-04T20:45:05+0200]]></end-at>
+  <duration>15</duration>
+  <number>16</number>
+  <altered>false</altered>
+  <remediation-cost>6</remediation-cost>
+  <nb-violations>5</nb-violations>
+  <reference><![CDATA[99b3c2fc080bde713dca73a26d2aefbb4b684a39]]></reference>
+  <launched-by><![CDATA[arneo]]></launched-by>
+  <configuration>
+    <ignored-branches>
+      <branch><![CDATA[gh-pages]]></branch>
+    </ignored-branches>
+    <pre-composer-script/>
+    <post-composer-script/>
+    <working-directory/>
+    <php-version/>
+    <php-ini/>
+    <commit-failure-conditions>
+      <branch><![CDATA[project.severity.critical > 0]]></branch>
+      <branch><![CDATA[project.severity.major > 0]]></branch>
+    </commit-failure-conditions>
+    <global-excluded-dirs>
+      <dir><![CDATA[vendor]]></dir>
+      <dir><![CDATA[vendors]]></dir>
+      <dir><![CDATA[test]]></dir>
+      <dir><![CDATA[tests]]></dir>
+      <dir><![CDATA[Tests]]></dir>
+      <dir><![CDATA[spec]]></dir>
+      <dir><![CDATA[features]]></dir>
+      <dir><![CDATA[Fixtures]]></dir>
+      <dir><![CDATA[DataFixtures]]></dir>
+      <dir><![CDATA[var]]></dir>
+    </global-excluded-dirs>
+    <excluded-patterns>
+      <pattern><![CDATA[app/check.php]]></pattern>
+      <pattern><![CDATA[app/SymfonyRequirements.php]]></pattern>
+      <pattern><![CDATA[public/index.php]]></pattern>
+      <pattern><![CDATA[web/config.php]]></pattern>
+      <pattern><![CDATA[web/app_*.php]]></pattern>
+    </excluded-patterns>
+    <patterns>
+      <file>
+        <pattern><![CDATA[*.php]]></pattern>
+        <pattern><![CDATA[*.twig]]></pattern>
+        <pattern><![CDATA[*.xml]]></pattern>
+        <pattern><![CDATA[*.yml]]></pattern>
+        <pattern><![CDATA[*.yaml]]></pattern>
+        <pattern><![CDATA[*.ini]]></pattern>
+        <pattern><![CDATA[*.dist]]></pattern>
+        <pattern><![CDATA[*.sql]]></pattern>
+        <pattern><![CDATA[*.md]]></pattern>
+        <pattern><![CDATA[*.rst]]></pattern>
+        <pattern><![CDATA[composer.*]]></pattern>
+        <pattern><![CDATA[.gitignore]]></pattern>
+        <pattern><![CDATA[LICENSE]]></pattern>
+        <pattern><![CDATA[README]]></pattern>
+        <pattern><![CDATA[Makefile]]></pattern>
+        <pattern><![CDATA[.htaccess]]></pattern>
+      </file>
+      <php>
+        <pattern><![CDATA[*.php]]></pattern>
+      </php>
+      <twig>
+        <pattern><![CDATA[*.twig]]></pattern>
+      </twig>
+    </patterns>
+    <rules>
+      <rule name="task_todo_comment" enabled="false"/>
+    </rules>
+    <parameters>
+      <parameter name="project_type">12</parameter>
+    </parameters>
+    <env/>
+    <notifications/>
+  </configuration>
+  <previous-analyses-references>
+    <analysis-reference number="16">99b3c2fc080bde713dca73a26d2aefbb4b684a39</analysis-reference>
+    <analysis-reference number="15">5e1cf0a4056ec5f44390082e5bbda4afdcdcb396</analysis-reference>
+    <analysis-reference number="14">a00d273e57ee2bc65b8548895c084299bcf5431c</analysis-reference>
+    <analysis-reference number="13">5ff108fce1a51fcb8e1f68e20802eea914e969e7</analysis-reference>
+    <analysis-reference number="12">8c6cea73684e738ebfbd793e243d09680ede344a</analysis-reference>
+    <analysis-reference number="11">739e1ee573313b094f35bbfe8e0e96bad1ceb9f5</analysis-reference>
+    <analysis-reference number="10">8d0a20a1b7cd1d2a45a16480feabbcd7a88167dc</analysis-reference>
+    <analysis-reference number="9">a90b5e8666d7e87c4ee41180740ff7433a254aef</analysis-reference>
+    <analysis-reference number="8">339dcc7ad4d084254b3594d1709d860485d2ddfe</analysis-reference>
+    <analysis-reference number="7">0dc2559593bcd72a494b2f2fba10f8a23ff3948f</analysis-reference>
+    <analysis-reference number="6">0dc2559593bcd72a494b2f2fba10f8a23ff3948f</analysis-reference>
+    <analysis-reference number="3">3554f49db93792f2e7b1463b722dde91922a3936</analysis-reference>
+    <analysis-reference number="2">39ff7a0bee6eedf8e5d4b1160af2a740941e84f6</analysis-reference>
+    <analysis-reference number="1">0de1b7e2cf376cc141ef0b0510efec0d3ecd4678</analysis-reference>
+  </previous-analyses-references>
+  <nb-violations-new>0</nb-violations-new>
+  <nb-violations-existing>5</nb-violations-existing>
+  <nb-violations-fixed>2</nb-violations-fixed>
+  <nb-violations-ignored>0</nb-violations-ignored>
+</analysis>

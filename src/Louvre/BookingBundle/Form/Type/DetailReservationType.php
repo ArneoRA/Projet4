@@ -18,8 +18,16 @@ class DetailReservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomVisiteur', TextType::class)
-            ->add('prenomVisiteur', TextType::class)
+            ->add('nomVisiteur', TextType::class, array(
+                'attr' => array(
+                    'placeholder' => '3 caracteres Minimum'
+                )
+            ))
+            ->add('prenomVisiteur', TextType::class, array(
+                'attr' => array(
+                    'placeholder' => '3 caracteres Minimum'
+                )
+            ))
             ->add('paysVisiteur', CountryType::class, array(
                 'preferred_choices'  => array(
                     'France'    => 'FR'

@@ -104,7 +104,7 @@ $(document).ready(function(){
             nomV.parent().removeClass('has-error');
             prenomV.parent().removeClass('has-error');
             // Test sur le contenu du Nom
-            if (nomV.val() == ""){
+            if (nomV.val() === "" || nomV.val().length <= 3){
                 // Ajout de la class has-error pour indiquer à l'utilisateur quel champ n'est pas valide
                 nomV.parent().addClass('has-error');
                 prenomV.parent().removeClass('has-error');
@@ -112,7 +112,7 @@ $(document).ready(function(){
                 // Bloque l'envoi du formulaire
                 return false;
             // Test sur le contenu du Prenom
-            } else if (prenomV.val() ==""){
+            } else if (prenomV.val() === "" || prenomV.val().length <= 3){
                 // Ajout de la class has-error pour indiquer à l'utilisateur quel champ n'est pas valide
                 prenomV.parent().addClass('has-error');
                 nomV.parent().removeClass('has-error');

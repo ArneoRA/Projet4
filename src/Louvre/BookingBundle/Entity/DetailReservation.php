@@ -29,6 +29,7 @@ class DetailReservation
      * @var string
      * @ORM\Column(name="Nom_Visiteur", type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\Length(min=3)
      */
     private $nomVisiteur;
 
@@ -36,6 +37,7 @@ class DetailReservation
      * @var string
      * @ORM\Column(name="Prenom_Visiteur", type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\Length(min=3)
      */
     private $prenomVisiteur;
 

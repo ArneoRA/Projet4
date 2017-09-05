@@ -16,6 +16,7 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('r')
             ->select('SUM(r.nbrePlaces)')
             ->where('r.dateVisite = :date')
+            ->andWhere('r.valided = 1')
             ->setParameter('date', $date)
             ->getQuery()
             ->getSingleScalarResult()
@@ -27,6 +28,7 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->createQueryBuilder('r')
             ->select('r.dateVisite', 'SUM(r.nbrePlaces) as Places')
+            ->where('r.valided = 1')
             ->groupBy('r.dateVisite')
             ->getQuery()
             ->getScalarResult()

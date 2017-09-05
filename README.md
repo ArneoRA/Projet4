@@ -292,3 +292,15 @@ _____________________________________________________
 
 Ce commit comprend :
 - Suppression de .gitignore : /.idea/
+- Amélioration du retour utilisateur sur le test Nom & Prenom sous formulaire DetailReservation : **mydetail.js**
+
+
+_____________________________________________________
+
+## 28eme Commit : Modifications tests tarif et champ valided
+
+Ce commit comprend :
+- Modification du test pour un enfant entre 4 et 12 et tarif réduit coché => Appliquer le tarif enfant : **/Services/Traitements.php** & sur le **TraitementsTest.php**
+- Modification des 2 requetes pour prendre en compte le champ "valided" qui confirme que la réservation a bien été payée : **/Repository/ReservationRepository.php**
+- Ajout des contraintes sur la taille minimale des champs Nom et Prenom + ajout des placeholder adéquat : **/Entity/DetailReservation** & **mydetail.js** 
+

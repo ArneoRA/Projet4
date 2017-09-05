@@ -57,6 +57,7 @@ class Reservation
      * @var string
      * @ORM\Column(name="Email_client", type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\Email(message = "Cet email : {{value}} n'est pas une adresse mail valide", checkMX = true)
      */
     private $emailClient;
 
